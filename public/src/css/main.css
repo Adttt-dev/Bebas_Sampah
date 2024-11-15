@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins&display=swap');
+
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+
+}
+
+.btn{
+  background-color: #4CAF4F;
+  width: 200px;
+  height: 35px;
+  font-size: 15px;
+}
+
+
+.navbar {
+  font-weight: 600;
+  font-style: normal;
+  background-color: white;
+}
+.navbar .navbar-brand {
+  letter-spacing: 2px;
+  font-size: 25px;
+  color: black;
+}
+
+.navbar .navbar-brand span {
+  color: #4CAF4F;
+}
+
+.navbar .navbar-nav a {
+  letter-spacing: 2px;
+  color:black;
+  font-size: 15px;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+  color: #4CAF4F;/* Warna teks saat aktif */
+}
+
+.navbar-nav .nav-item .nav-link {
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animasi transisi */
+}
+
+
+/* menu  */
+.menu{
+  background-color:white;
+}
+
+.menu .judul h1{
+  font-size: 45px;
+  font-weight: 700;
+  color: rgb(41, 41, 41);
+}
+
+.menu .judul span{
+  color: #4CAF4F;
+}
+
+.menu .judul p{
+  font-size: 20px;
+  color: rgb(41, 41, 41);
+}
+
+
+/* layanan */
+#layanan {
+  background-color: white;
+}
+#layanan .card .card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#layanan .card {
+  background-color:white;
+}
+
+#layanan .card-text {
+  font-size: 14px;
+  color: rgb(98, 98, 98);
+}
+
+/* menu edukasi */
+.menu-edukasi{
+  background-color: white;
+}
+
+.menu-edukasi h3{
+  color: black;
+}
+
+.menu-edukasi span{
+  color: #4CAF4F;
+}
+
+/* footer */
+.main-footer-menu {
+  background-color: white;
+}
+.main-footer-menu h3 {
+  color: rgb(0, 0, 0);
+  margin-bottom: 15px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.main-footer-menu .main-logo-footer {
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: rgb(0, 137, 39);
+}
+
+.main-footer-menu .main-logo-footer span {
+  color: black;
+}
+
+.main-footer-menu a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+
+.main-footer-menu ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.main-footer-menu ul li {
+  margin-bottom: 15px;
+}
+
+.main-footer-copy {
+  color: black;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-footer{
+  background-color: #176d1a;
+  color: white;
+}
