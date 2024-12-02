@@ -1,0 +1,39 @@
+/* .container-atas{
+    box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.735);
+} */
+
+.laporan{
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.735);
+}
+
+
+.head-table{
+    background-color: #212529;
+    color: white;
+    border: none;
+    height: 50px;
+}
+
+/* table */
+.col-no {
+    width: 5%;
+  }
+  
+  .col-laporan {
+    width: 55%;
+  }
+  
+  .col-lokasi {
+    width: 20%;
+  }
+  
+  .col-pelapor {
+    width: 20%;
+  }
+  
+  td {
+    height: 50px;
+  }
+  
+
+  

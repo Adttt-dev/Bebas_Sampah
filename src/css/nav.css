@@ -1,0 +1,30 @@
+.navbar {
+    font-weight: 600;
+    font-style: normal;
+    background-color: white;
+  }
+  .navbar .navbar-brand {
+    letter-spacing: 2px;
+    font-size: 25px;
+  }
+  
+  .navbar .navbar-brand span {
+    color: #54ea54;
+  }
+  
+  .navbar .navbar-nav a {
+    letter-spacing: 1px;
+    color: black;
+    font-size: 15px;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi transisi */
+  }
+  
+
+/* active */
+  .navbar-nav .nav-item .nav-link.active {
+      color: #198754 !important; 
+      font-weight: bold;
+  }

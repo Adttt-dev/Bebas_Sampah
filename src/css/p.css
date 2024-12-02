@@ -1,0 +1,74 @@
+
+body {
+    background-color: grey;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #F5A623;
+    border-bottom-left-radius: 50%;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+.profile-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 50%;
+    z-index: 0;
+}
+
+.btn-custom {
+    background-color: #F5A623;
+    border: none;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+.btn-outline-custom {
+    border: 1px solid #000000;
+    color: #000000;
+    font-weight: 500;
+}
+
+.btn-outline-custom:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.nav-link {
+    color: #000000;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #F5A623;
+}
+
+.navbar-brand {
+    font-weight: 500;
+}

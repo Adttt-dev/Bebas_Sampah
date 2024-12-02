@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+:root {
+  --primary-green: #2ecc71;
+  --dark-green: #27ae60;
+  --soft-gray: #f4f6f7;
+}
+
+.btn {
+  width: 150px;
+  height: 30px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  font-size: 13px;
+  background-color: var(--primary-green);
+  border: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: var(--dark-green);
+}
+
+
+/* layanan */
+
+.layanan-card {
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pastikan tombol berada di bagian bawah jika diperlukan */
+  /* align-items: center;  */
+  height: 100%;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.379);
+}
+
+.layanan-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.571);
+}
+
+.layanan-card-img {
+  background-color: var(--soft-gray);
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layanan-card-img img {
+  max-width: 60%;
+  transition: transform 0.3s ease;
+}
+
+.layanan-card:hover .layanan-card-img img {
+  transform: scale(1.1);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.layanan-btn {
+  background-color: var(--primary-green);
+  border: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-top: auto; /* Untuk mengarahkan tombol ke bawah jika ada ruang lebih */
+}
+
+.layanan-btn:hover {
+  background-color: var(--dark-green);
+}
+
+#layanan {
+  background-color: white;
+}
+
+/* menu edukasi */
+.solusi {
+  background-color: white;
+}
+
+.edukasi h3 {
+  color: black;
+}
+
+.edukasi span {
+  color: #4caf4f;
+}
+
+.btn-edu {
+  font-size: 12px;
+}
+
+/* footer */
+.main-footer-menu h3 {
+  color: rgb(0, 0, 0);
+  margin-bottom: 15px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.main-footer-menu .main-logo-footer {
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: rgb(0, 137, 39);
+}
+
+.main-footer-menu .main-logo-footer span {
+  color: black;
+}
+
+.main-footer-menu a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.main-footer-menu a:hover {
+  text-decoration: underline;
+  color: #00ff00;
+}
+
+.main-footer-menu ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.main-footer-menu ul li {
+  margin-bottom: 15px;
+}
+
+.main-footer-copy {
+  color: black;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-footer {
+  /* background: linear-gradient(to right, #070707 10%, #0a1f11 100%); */
+  background-color: #070707;
+  color: white;
+}
+
+/* peta */
+.peta .title-project {
+  color: #000;
+}
+
+.title-project span {
+  color: #4caf4f;
+}
+
+
+/* saran */
+.form-select:focus, .form-control:focus {
+  outline: none; /* Menghilangkan outline biru */
+  box-shadow: none; /* Menghilangkan bayangan default */
+  border: 2px solid #4CAF50; /* Border tetap hijau */
+}

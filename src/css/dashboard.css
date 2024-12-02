@@ -1,0 +1,43 @@
+  .login-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-container h1 {
+    font-weight: bold;
+    color: #6e8efb;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #a777e3, #6e8efb);
+  }
+  
+  .form-control:focus {
+    border-color: #6e8efb;
+    box-shadow: 0 0 0 0.2rem rgba(110, 142, 251, 0.25);
+  }
+  
+  .error-message {
+    color: red;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .logo-dashboard {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .nav-sidebar .nav-link.active {
+    background-color: #535353;
+    color: white;
+  }
+  

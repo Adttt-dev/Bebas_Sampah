@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins&display=swap');
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+.menu {
+  width: calc(100% - 10px); /* Menyesuaikan lebar */
+  height: calc(95vh - 10px); /* Menyesuaikan tinggi */
+  box-sizing: border-box; /* Pastikan padding tidak memengaruhi ukuran */
+  /* background-color: #27ae60; */
+  background-color: #000000;
+  /* background-color: white; */
+  /* display: flex;
+  align-items: center; */
+}
+
+
+.bg-menu {
+  position: relative; /* Penting untuk mengatur posisi relative sebagai referensi untuk pseudo-elemen */
+  /* background: linear-gradient(to right, #070707 10%, #07251b 100%); */
+  background-color: black;
+  border-radius: 30px;
+  box-shadow: 0 3px 3px 0 rgb(97, 97, 97);
+  padding: 10px;
+  overflow: hidden; /* Pastikan pseudo-elemen tidak keluar dari elemen ini */
+}
+
+.bg-menu::before {
+  content: '';
+  position: absolute; /* Supaya bisa diposisikan relatif terhadap .bg-menu */
+  top: 0; /* Pastikan dimulai dari bagian atas elemen */
+  right: 0; /* Menempel di sisi kanan */
+  width: 50%; /* Lebar sesuai kebutuhan */
+  height: 100%; /* Tinggi mengikuti elemen induk */
+  /* background-color: #27AE60; */
+  background-color: white;
+  border-bottom-left-radius: 50%; /* Efek lengkung di bagian bawah kiri */
+  /* z-index: 0; Pastikan berada di belakang konten */
+}
+
+
+.bg-menu .judul h1 {
+  font-size: 43px;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+  /* color: black; */
+}
+
+
+.bg-menu .judul span {
+  color: #4CAF4F;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.bg-menu p,
+.container-edukasi p {
+  font-size: 15px;
+  color: rgb(96, 96, 96);
+}
+
+.btn-menu {
+  border: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+/* header */
+.judul-edukasi h1{
+  font-size: 60px;
+  font-weight: 800;
+}
+.judul-edukasi h1 span{
+  font-size: 60px;
+  font-weight: 800;
+  color: #4CAF4F;
+}
+
+
+/* edukasi */
+.menuEdukasi {
+  width: calc(100% - 10px); 
+  height: calc(100vh - 10px); 
+  box-sizing: border-box; 
+  background-color:rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+}
+
+.container-edukasi .judul .subjudul{
+  font-size: 60px;
+  font-weight: 800;
+  color: #4CAF4F;
+}
+
+.container-edukasi .judul h1 {
+  font-size: 60px;
+  font-weight: 800;
+  color: rgb(0, 0, 0);
+}
+.container-edukasi span {
+  font-weight: 600;
+  font-size: 40px;
+  color: #4CAF4F;
+}
+
+/* cara kelola sampah */
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1px 0;
+}
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #4CAF50;
+  top: 180px; /* Adjusted to start after the title */
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+.timeline-item {
+  padding: 10px 10px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #4CAF50;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+.left {
+  left: 0;
+}
+.right {
+  left: 50%;
+}
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+.right::after {
+  left: -16px;
+}
+.timeline-content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+.timeline-content h4 {
+  margin-top: 0;
+  color: #333;
+}
+.timeline-content p {
+  margin: 0;
+  color: #666;
+}
+.timeline-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* jenis sampah */
+.g-sampah img{
+  border-radius: 20px;
+
+}
