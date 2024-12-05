@@ -37,17 +37,17 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Pastikan tombol berada di bagian bawah jika diperlukan */
-  /* align-items: center;  */
   height: 100%;
-  background: white;
-  border-radius: 15px;
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.379);
+  border: 1px solid rgb(31, 31, 31);
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.379); */
 }
 
 .layanan-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.571);
+  transform: scale(1.005);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.571);
 }
 
 .layanan-card-img {
@@ -172,6 +172,11 @@ body {
 
 .title-project span {
   color: #4caf4f;
+}
+
+.map iframe{
+  border:2px solid black;
+  border-radius: 10px;
 }
 
 

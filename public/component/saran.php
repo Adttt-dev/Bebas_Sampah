@@ -18,7 +18,6 @@ if (isset($_POST['submit'])) {
 ?>
 
 <link rel="stylesheet" href="../../src/css/main.css">
-
 <!-- halaman atas untuk Saran -->
 <section class="saran-menu py-5">
   <div class="container px-4 container-atas">
@@ -28,9 +27,9 @@ if (isset($_POST['submit'])) {
         data-aos="fade-up"
         data-aos-anchor-placement="center-bottom"
         data-aos-duration="1500">
-        <div class="px-4  py-5">
-          <!-- Ikon Saran menggunakan Font Awesome -->
-          <i class="fas fa-lightbulb fa-10x text-success"></i>
+        <div class="px-4 py-5">
+          <!-- Ganti Ikon dengan GIF -->
+          <img src="../../src/img/g.gif" alt="Saran GIF" class="img-fluid" style="max-width: 300px;" />
         </div>
       </div>
       <div
@@ -51,9 +50,9 @@ if (isset($_POST['submit'])) {
 </section>
 
 <!-- Form Tambah Saran -->
-<section class="form-section py-5 mb-5">
+<section id="saran" class="form-section py-5 mb-5">
   <div class="container py-5 bg-white shadow-lg rounded">
-    <h2 class="text-center mb-4" style="font-family: 'Poppins', sans-serif; color: #333;">Form Tambah Saran</h2>
+    <h2 class="text-center mb-4 fw-bold" style="font-family: 'Poppins', sans-serif; color: #333;">Form Tambah Saran</h2>
     <form action="" method="post">
       <div class="mb-3">
         <label for="kategori" class="form-label" style="font-size: 1.1rem; font-weight: 500;">Kategori Saran</label>

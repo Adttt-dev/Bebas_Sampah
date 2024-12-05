@@ -11,7 +11,7 @@
 
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
-                <div class="layanan-card card border-0 h-100">
+                <div class="layanan-card card h-100">
                     <div class="layanan-card-icon text-center py-3">
                         <i class="fas fa-5x fa-map-marked-alt text-success display-3"></i>
                     </div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
-                <div class="layanan-card card border-0 h-100">
+                <div class="layanan-card card h-100">
                     <div class="layanan-card-icon text-center py-3">
                         <i class="fas fa-5x fa-file-alt text-success display-3"></i>
                     </div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
-                <div class="layanan-card card border-0 h-100">
+                <div class="layanan-card card h-100">
                     <div class="layanan-card-icon text-center py-3">
                         <i class="fas fa-5x fa-lightbulb text-success display-3"></i>
                     </div>

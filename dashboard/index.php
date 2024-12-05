@@ -24,7 +24,6 @@ if (isset($_POST['login'])) {
     $error = true;
 }
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -33,80 +32,15 @@ if (isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <title>Admin Login</title>
+    <link rel="stylesheet" href="../src/css/login.css">
+    <title>Login</title>
     <style>
-        body {
-            background: linear-gradient(135deg, #3a6186, #89253e);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .login-container {
-            background: #fff;
-            border-radius: 15px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .login-container h1 {
-            font-size: 24px;
-            font-weight: bold;
-            color: #89253e;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: #89253e;
-            border-color: #89253e;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: #3a6186;
-            border-color: #3a6186;
-        }
-
-        .input-group-text {
-            background-color: #89253e;
-            color: #fff;
-            border: none;
-        }
-
-        .form-control {
-            border-left: none;
-            border-color: #ddd;
-        }
-
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #89253e;
-        }
-
-        .error-message {
-            color: #ff4d4d;
-            font-size: 14px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        @media (max-width: 576px) {
-            .login-container {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
-        <h1>Login Admin</h1>
+        <h1>Login</h1>
         
         <!-- Jika ada error -->
         <?php if (isset($error)) { ?>
@@ -118,7 +52,7 @@ if (isset($_POST['login'])) {
                 <label for="username" class="form-label">Username</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan username Anda">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan username Anda" autocomplete="off">
                 </div>
             </div>
             <div class="mb-3">
@@ -129,6 +63,7 @@ if (isset($_POST['login'])) {
                 </div>
             </div>
             <button type="submit" name="login" class="btn btn-primary w-100">Login</button>
+            <a href="../public/page/home.php">Kembali ke Home</a>
         </form>
     </div>
 

@@ -32,12 +32,12 @@
                     Temukan titik-titik pengumpulan sampah dan mari bersama-sama menjaga kebersihan lingkungan kita!F
                 </p>
                 <!-- map -->
-                <div class="map" style="border-radius: 20px; box-shadow: 0 5px 25px black;">
+                <div class="map">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d206849.4305506609!2d104.752799221325!3d-2.9669562982098174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1731028698241!5m2!1sid!2sid"
                         width="100%"
                         height="500px"
-                        style="border:0; border-radius: 20px;"
+                        style="border:1px solid black; border-radius: 10px;"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>

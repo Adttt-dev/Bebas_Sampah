@@ -32,13 +32,21 @@ function tambah($data)
     return mysqli_affected_rows($conection);
 }
 
-function delete($id)
+// delete laporan
+function deleteLaporan($id)
 {
     global $conection;
-    $query = "DELETE FROM laporan WHERE id = '$id'";
-    mysqli_query($conection, $query);
+    mysqli_query($conection, "DELETE FROM laporan WHERE id = $id");
     return mysqli_affected_rows($conection);
-}
+};
+
+// delete saran
+function deleteSaran($id)
+{
+    global $conection;
+    mysqli_query($conection, "DELETE FROM saran WHERE id = $id");
+    return mysqli_affected_rows($conection);
+};
 
 
 // update
@@ -179,10 +187,8 @@ function updateSaran($data)
     // Close statement
     mysqli_stmt_close($stmt);
 
-    // If no rows were affected, maybe data wasn't changed
     if ($affectedRows === 0) {
-        // This means no row was updated, possibly due to no change in data
-        return -1; // Use -1 to indicate no changes were made
+        return -1; 
     }
 
     // Return the number of affected rows (greater than 0 indicates success)

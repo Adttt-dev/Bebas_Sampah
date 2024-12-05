@@ -5,7 +5,7 @@
             <!-- Gambar -->
             <div class="col-lg-6 text-center mb-4 mb-lg-0" data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-duration="1500">
                 <div class="px-4 py-5">
-                    <img src="../../src/img/home.png" class="img-fluid w-100" alt="Ilustrasi Edukasi Sampah">
+                    <img src="../../src/img/home.png" class="img-fluid w-75" alt="Ilustrasi Edukasi Sampah">
                 </div>
             </div>
 
@@ -16,84 +16,87 @@
                 </div>
                 <p class="py-2 text-muted">Sampah menjadi masalah besar di seluruh dunia, mencemari lingkungan dan mengancam kesehatan kita. Melalui edukasi dan kesadaran bersama, kita bisa mengurangi, mendaur ulang, dan mengelola sampah dengan lebih bertanggung jawab. Laporan tentang pembuangan sampah ilegal atau yang tercecer dapat membantu kita menjaga kebersihan dan kesehatan lingkungan.</p>
                 <a href="#jenis-sampah" class="btn btn-primary align-items-center text-white">
-                    Selengkapnya..
+                    Selengkapnya
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<section id="jenis-sampah" class="edukasi pt-5 mb-5">
-    <div class="container px-4 shadow-lg py-5">
+<!-- jenis sampah -->
+<section id="jenis-sampah" class="edukasi py-5 mb-5"">
+    <div class="container px-5 py-5">
         <div class="text-center mb-5">
             <h2 class="fw-bold display-6">
                 JENIS-JENIS <span class="text-success">SAMPAH</span>
             </h2>
-            <p class="text-muted lead">
+            <p class="text-muted lead" style="font-size: 18px;">
                 Pelajari jenis-jenis sampah yang ada dan cara pengelolaannya untuk menjaga lingkungan agar tetap bersih dan sehat.
             </p>
         </div>
-        <div class="row py-3">
-            <!-- Teks Jenis Sampah Organik -->
-            <div class="col-lg-6 align-self-center" data-aos="fade-up" data-aos-duration="1500">
-                <div class="mb-4">
-                    <h3 class="mb-4 fw-bold">
-                        Sampah <span class="text-success">Organik</span>
-                    </h3>
-                    <p style="text-align: justify;" class="text-muted">
-                        Sampah organik terdiri dari bahan alami yang dapat terurai dengan mudah, seperti sisa makanan, daun, dan limbah dapur. Sampah ini dapat didaur ulang menjadi kompos yang berguna untuk meningkatkan kesuburan tanah. Pengelolaan sampah organik mengurangi volume sampah yang masuk ke tempat pembuangan akhir dan memberi manfaat besar bagi lingkungan.
-                    </p>
+
+        <!-- Sampah Organik -->
+        <div class="row align-items-center py-4">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="d-flex justify-content-center g-sampah">
+                    <img src="../../src/img/sampah/organik.jpg" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah Organik">
                 </div>
             </div>
-            <!-- Gambar Sampah Organik -->
-            <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1500">
-                <div class="d-flex justify-content-center g-sampah">
-                    <img src="../../src/img/sampah/organik.jpg" class="img-fluid img-sampah w-75" alt="Sampah Organik">
+            <div class="col-lg-6" data-aos="fade-left">
+                <div>
+                    <h3 class="mb-3 fw-bold">
+                        <i class="fas fa-leaf text-success me-2"></i>
+                        Sampah <span class="text-gradient">Organik</span>
+                    </h3>
+                    <p class="text-muted">
+                        Sampah organik terdiri dari bahan alami yang dapat terurai dengan mudah, seperti sisa makanan, daun, dan limbah dapur. Sampah ini dapat didaur ulang menjadi kompos yang berguna untuk meningkatkan kesuburan tanah.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="row py-3">
-            <!-- Teks Sampah Anorganik -->
-            <div class="col-lg-6 align-self-center" data-aos="fade-up" data-aos-duration="1500">
-                <div class="mb-4">
-                    <h3 class="mb-4 fw-bold">
-                        Sampah <span class="text-success">Anorganik</span>
-                    </h3>
-                    <p style="text-align: justify;" class="text-muted">
-                        Sampah anorganik, seperti plastik, kaca, logam, dan kertas, tidak terurai secara alami dan membutuhkan waktu yang lama untuk hancur. Pengelolaan sampah ini melibatkan daur ulang atau pembuangan yang benar, agar tidak mencemari lingkungan. Banyak barang plastik dan kertas dapat didaur ulang untuk digunakan kembali.
-                    </p>
+        <!-- Sampah Anorganik -->
+        <div class="row align-items-center py-4">
+            <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+                <div class="d-flex justify-content-center g-sampah">
+                    <img src="../../src/img/sampah/anorganik.jpg" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah Anorganik" >
                 </div>
             </div>
-            <!-- Gambar Sampah Anorganik -->
-            <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1500">
-                <div class="d-flex justify-content-center g-sampah">
-                    <img src="../../src/img/sampah/anorganik.jpg" class="img-fluid img-sampah w-75" alt="Sampah Anorganik">
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                <div>
+                    <h3 class="mb-3 fw-bold">
+                        <i class="fas fa-recycle text-primary me-2"></i>
+                        Sampah <span class="text-gradient">Anorganik</span>
+                    </h3>
+                    <p class="text-muted">
+                        Sampah anorganik, seperti plastik, kaca, logam, dan kertas, tidak terurai secara alami dan membutuhkan waktu yang lama untuk hancur. Banyak barang plastik dan kertas dapat didaur ulang untuk digunakan kembali.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="row py-3">
-            <!-- Teks Sampah B3 (Berbahaya) -->
-            <div class="col-lg-6 align-self-center" data-aos="fade-up" data-aos-duration="1500">
-                <div class="mb-4">
-                    <h3 class="mb-4 fw-bold">
-                        Sampah <span class="text-success">B3 (Berbahaya)</span>
-                    </h3>
-                    <p style="text-align: justify;" class="text-muted">
-                        Sampah B3 mencakup bahan-bahan berbahaya seperti bahan kimia, baterai, lampu neon, dan limbah medis yang dapat mencemari lingkungan jika tidak dikelola dengan hati-hati. Sampah jenis ini harus dibuang dengan cara yang sangat spesifik untuk menghindari kerusakan pada ekosistem dan kesehatan manusia.
-                    </p>
+        <!-- Sampah B3 -->
+        <div class="row align-items-center py-4">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="d-flex justify-content-center g-sampah">
+                    <img src="../../src/img/sampah/b3.png" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah B3">
                 </div>
             </div>
-            <!-- Gambar Sampah B3 -->
-            <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1500">
-                <div class="d-flex justify-content-center g-sampah">
-                    <img src="../../src/img/sampah/b3.png" class="img-fluid img-sampah w-75" alt="Sampah B3">
+            <div class="col-lg-6" data-aos="fade-left">
+                <div>
+                    <h3 class="mb-3 fw-bold">
+                        <i class="fas fa-biohazard text-danger me-2"></i>
+                        Sampah <span class="text-gradient">B3 (Berbahaya)</span>
+                    </h3>
+                    <p class="text-muted">
+                        Sampah B3 mencakup bahan-bahan berbahaya seperti bahan kimia, baterai, lampu neon, dan limbah medis yang dapat mencemari lingkungan jika tidak dikelola dengan hati-hati.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- dampak -->
 <section id="dampak-sampah" class="pt-5 text-dark">
@@ -112,7 +115,7 @@
                 <!-- Slide Pertama -->
                 <div class="carousel-item active">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8">
+                        <div class="col-lg-9">
                             <div class="card border-0 shadow-lg">
                                 <div class="card-body text-center">
                                     <iframe
@@ -200,33 +203,52 @@
         </div>
     </div>
 </section>
-<section class="kelola-sampah">
-    <div class="container shadow-lg">
-        <div class="timeline py-5">
-            <div class="timeline-title">
-                <h1 class="fw-bold">Cara Mengelola Sampah dengan Benar</h1>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h4>Reduce (Mengurangi)</h4>
+
+<!-- kelola sampah -->
+<section class="kelola-sampah py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">CARA MENGELOLA SAMPAH DENGAN BENAR</h1>
+            <p class="text-muted">Langkah-langkah sederhana untuk membantu menjaga lingkungan.</p>
+        </div>
+        <div class="timeline">
+            <!-- Reduce -->
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-icon bg-primary text-white">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="timeline-content bg-light p-4 rounded shadow-sm">
+                    <h4 class="text-primary">Reduce (Mengurangi)</h4>
                     <p>Kurangi penggunaan barang sekali pakai dan pilihlah produk yang lebih ramah lingkungan. Mengurangi sampah sejak awal adalah langkah pertama dalam pengelolaan sampah yang baik.</p>
                 </div>
             </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h4>Reuse (Menggunakan Kembali)</h4>
+            <!-- Reuse -->
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-icon bg-success text-white">
+                    <i class="fas fa-recycle"></i>
+                </div>
+                <div class="timeline-content bg-light p-4 rounded shadow-sm">
+                    <h4 class="text-success">Reuse (Menggunakan Kembali)</h4>
                     <p>Manfaatkan kembali barang-barang yang masih bisa digunakan, seperti kantong plastik dan botol kaca. Ini membantu mengurangi sampah yang terbuang dan memperpanjang usia barang tersebut.</p>
                 </div>
             </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h4>Recycle (Mendaur Ulang)</h4>
+            <!-- Recycle -->
+            <div class="timeline-item left" data-aos="fade-right">
+                <div class="timeline-icon bg-warning text-white">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="timeline-content bg-light p-4 rounded shadow-sm">
+                    <h4 class="text-warning">Recycle (Mendaur Ulang)</h4>
                     <p>Pisahkan sampah anorganik seperti plastik, kaca, dan logam agar dapat didaur ulang dan digunakan kembali dalam proses produksi. Daur ulang mengurangi kebutuhan akan bahan baku baru dan menghemat energi.</p>
                 </div>
             </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h4>Composting (Pengomposan)</h4>
+            <!-- Composting -->
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-icon bg-info text-white">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="timeline-content bg-light p-4 rounded shadow-sm">
+                    <h4 class="text-info">Composting (Pengomposan)</h4>
                     <p>Ubah sampah organik seperti sisa makanan dan daun menjadi kompos yang berguna sebagai pupuk untuk tanaman. Pengomposan mengurangi jumlah sampah yang dibuang ke tempat pembuangan akhir dan menghasilkan produk yang bermanfaat bagi lingkungan.</p>
                 </div>
             </div>

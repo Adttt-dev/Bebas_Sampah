@@ -31,7 +31,7 @@ $laporan = query("SELECT * FROM laporan");
         data-aos-anchor-placement="center-bottom"
         data-aos-duration="1500">
         <div class="px-4">
-          <img src="../../src/img/lapor.png" class="px-4 pb-5 w-75">
+          <img src="../../src/img/laporan.png" class="px-4 pb-5 w-75">
         </div>
       </div>
       <!-- <hr class="border-secondary mb-4"> -->

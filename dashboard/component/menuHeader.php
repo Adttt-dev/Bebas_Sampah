@@ -25,6 +25,12 @@ $total_count = $total_laporan;
 $total_keseluruhan = $total_laporan + $total_saran;
 ?>
 
+<style>
+    h5{
+        text-align: center;
+    }
+</style>
+
 <!-- KPIs -->
 <div class="container mt-4">
     <div class="row g-4">
@@ -33,9 +39,9 @@ $total_keseluruhan = $total_laporan + $total_saran;
             <div class="card kpi-card bg-primary text-white">
                 <div class="card-body d-flex align-items-center">
                     <i class="bi bi-file-earmark-text fs-1 me-3"></i>
-                    <div>
-                        <h5><?= $total_laporan; ?></h5>
+                    <div class="px-2">
                         <p class="fs-3 fw-bold">Laporan</p>
+                        <h5><?= $total_laporan; ?></h5>
                     </div>
                 </div>
             </div>
@@ -45,9 +51,9 @@ $total_keseluruhan = $total_laporan + $total_saran;
             <div class="card kpi-card bg-success text-white">
                 <div class="card-body d-flex align-items-center">
                     <i class="bi bi-chat-left-dots fs-1 me-3"></i>
-                    <div>
-                        <h5><?= $total_saran; ?></h5>
+                    <div class="px-2">
                         <p class="fs-3 fw-bold">Saran</p>
+                        <h5><?= $total_saran; ?></h5>
                     </div>
                 </div>
             </div>
@@ -57,9 +63,9 @@ $total_keseluruhan = $total_laporan + $total_saran;
             <div class="card kpi-card bg-warning text-white">
                 <div class="card-body d-flex align-items-center">
                     <i class="bi bi-lightning-fill fs-1 me-3"></i>
-                    <div>
-                        <h5>0</h5>
+                    <div class="px-2">
                         <p class="fs-3 fw-bold">Aksi</p>
+                        <h5>0</h5>
                     </div>
                 </div>
             </div>
@@ -69,9 +75,9 @@ $total_keseluruhan = $total_laporan + $total_saran;
             <div class="card kpi-card bg-danger text-white">
                 <div class="card-body d-flex align-items-center">
                     <i class="bi bi-bar-chart-fill fs-1 me-3"></i>
-                    <div>
-                        <h5><?= $total_keseluruhan; ?></h5>
+                    <div class="px-2">
                         <p class="fs-3 fw-bold">Total</p>
+                        <h5><?= $total_keseluruhan; ?></h5>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,12 @@
+<style>
+    a{
+        text-decoration: none;
+        color: white;
+    }
+</style>
 
 <!-- saran -->
-<section id="saran" class="py-3 mb-5">
+<section id="saran" class="mb-5">
     <!-- <h1 class="fw-bold text-center pt-4">Lorem ipsum dolor sit amet consectetur!</h1> -->
     <div class="container py-3">
         <div class="table-container container py-4 shadow-lg">
@@ -23,10 +29,11 @@
                             <td><?= $s['saran']; ?></td>
                             <td class="report-actions">
                                 <button class="btn btn-warning btn-sm">
-                                    <i class="bi bi-pencil me-1"></i>Edit
+                                    <a href="../page/update_saran.php?id=<?= $s['id'] ?>" class="text-dark"><i class="bi bi-pencil me-1"></i>Edit</a>
                                 </button>
-                                <button class="btn btn-danger btn-sm" onclick="confirmDelete()">
-                                    <i class="bi bi-trash me-1"></i>Delete
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash me-1"></i>
+                                    <a href="../component/deleteSaran.php?id=<?= $s['id'] ?>" onclick="return confirm('Apakah Anda yakin?')">Delete</a>
                                 </button>
                             </td>
                         </tr>

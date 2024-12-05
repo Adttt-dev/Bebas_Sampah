@@ -5,6 +5,13 @@ $saran = query('SELECT * FROM saran');
 
 ?>
 
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
+
 <!-- saran -->
 <section id="saran" class="py-3 mb-5">
     <!-- <h1 class="fw-bold text-center pt-4">Lorem ipsum dolor sit amet consectetur!</h1> -->
@@ -29,10 +36,10 @@ $saran = query('SELECT * FROM saran');
                             <td><?= $s['saran']; ?></td>
                             <td class="report-actions">
                                 <button class="btn btn-warning btn-sm">
-                                    <i class="bi bi-pencil me-1"></i>Edit
+                                    <a href="../page/update_saran.php?id=<?= $s['id'] ?>&redirect=../page/saran.php"><i class="bi bi-pencil me-1"></i>Edit</a>
                                 </button>
-                                <button class="btn btn-danger btn-sm" onclick="confirmDelete()">
-                                    <i class="bi bi-trash me-1"></i>Delete
+                                <button type="submit" class="btn btn-danger">
+                                    <a href="../component/deleteSaran.php?id=<?= $s['id'] ?>&redirect=../page/saran.php" onclick="return confirm('apakah anda yakin?')">Delete</a>
                                 </button>
                             </td>
                         </tr>

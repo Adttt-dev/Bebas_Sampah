@@ -62,6 +62,6 @@
         </div>
         <hr class="border-secondary">
         <div class="text-center mt-3">
-            <p class="small mb-0">&copy; 2024 Kelola Sampah. All Rights Reserved.</p>
+            <p class="small mb-0">&copy; 2024 Bebas sampah.</p>
         </div>
     </div>
