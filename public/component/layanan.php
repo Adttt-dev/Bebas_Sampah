@@ -52,7 +52,7 @@
                         <p class="card-text text-muted mb-4">
                             Berikan masukan atau saran untuk memperbaiki sistem pengelolaan sampah. Bersama, kita dapat menciptakan inovasi untuk lingkungan yang lebih baik.
                         </p>
-                        <a href="../../public/page/aset.php" class="btn layanan-btn text-white">
+                        <a href="../../public/page/saran.php" class="btn layanan-btn text-white">
                             KIRIM SARAN
                         </a>
                     </div>
