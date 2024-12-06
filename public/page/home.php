@@ -32,7 +32,7 @@
     
     // menu
     include '../component/home.php';
-
+    include '../component/tekslide.php';
     // layanan
     include '../component/layanan.php';
 
