@@ -49,6 +49,7 @@
 
     <?php
     // footer
+    include '../component/backtop.php';
     include '../component/footer.php';
     ?>
 

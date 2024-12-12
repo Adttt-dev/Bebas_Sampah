@@ -33,9 +33,9 @@
     // menu
     include '../component/home.php';
     include '../component/tekslide.php';
+    include '../component/hoverpad.php';
     // layanan
     include '../component/layanan.php';
-
     // edukasi
     include '../component/edukasi.php';
 
@@ -44,7 +44,7 @@
 
     // edukasi
     // include '../component/edukasi.php';
-
+    include '../component/backtop.php';
     // footer
     include '../component/footer.php';
     ?>

@@ -18,6 +18,9 @@
             color: white;
             text-decoration: none;
         }
+        .navbar-orange {
+    background-color: #FFA500;
+}
     </style>
 </head>
 
