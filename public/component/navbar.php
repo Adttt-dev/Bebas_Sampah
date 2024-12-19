@@ -18,6 +18,10 @@
             color: white;
             text-decoration: none;
         }
+
+        .navbar-orange {
+            background-color: #FFA500;
+        }
     </style>
 </head>
 
@@ -53,9 +57,11 @@
                     </li>
                 </ul>
                 <div class="ms-lg-3">
-                    <button class="btn btn-primary">
-                        <a href="../../dashboard/index.php">Login</a>
-                    </button>
+                    <a href="../../dashboard/index.php">
+                        <button class="btn btn-primary">
+                            Login
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

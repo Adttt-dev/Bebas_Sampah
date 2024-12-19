@@ -37,29 +37,28 @@ if (isset($_POST['login'])) {
 
 <body>
     <div class="container">
-        <div class="left">
-            <?php if (isset($error)) { ?>
-                <p class="error-message show">Username atau Password Salah!</p>
-            <?php } ?>
+        <div class="right">
+            <h2>Halo, Teman!</h2>
+            <p>Daftarkan diri anda dan mulai gunakan layanan kami segera</p>
+            <a href="index.php" class="text-decoration-none">
+                <button class="btn btn-outline-light w-100">SIGN IN</button>
+            </a>
 
-            <h2 class="py-5">Sign in</h2>
+        </div>
+        <div class="left">
+            <h2 class="py-5">Sign Up</h2>
             <!-- Jika ada error -->
+            <?php if (isset($error)) { ?>
+                <p class="error-message">Username atau Password Salah!</p>
+            <?php } ?>
             <form action="" method="POST">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username">
                 <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                 <a href="../public/page/home.php" class="text-decoration-none">kembali?</a>
-                <button type="submit" name="login" class="btn btn-primary mt-3 w-100">SIGN IN</button>
+                <a href="index.php" class="text-decoration-none">
+                    <button type="submit" name="login" class="btn btn-primary mt-3 w-100">SIGN UP</button>
+                </a>
             </form>
-            <!-- <a href="index.php" class="text-decoration-none"> -->
-            <!-- </a> -->
-        </div>
-        <div class="right">
-            <h2>Halo, Teman!</h2>
-            <p>Daftarkan diri anda dan mulai gunakan layanan kami segera</p>
-            <a href="register.php" class="text-decoration-none">
-                <button class="btn btn-outline-light w-100">SIGN UP</button>
-            </a>
-
         </div>
     </div>
 </body>

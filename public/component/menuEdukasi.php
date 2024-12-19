@@ -1,3 +1,11 @@
+<!-- dampak -->
+<?php
+include "../../database/conection.php";
+// Ambil data carousel
+$carouselItems = getCarouselItems();
+?>
+
+
 <!-- Halaman Atas -->
 <section class="lapor-menu py-3">
     <div class="container px-4 py-5">
@@ -25,184 +33,137 @@
 
 <!-- jenis sampah -->
 <section id="jenis-sampah" class="edukasi py-5 mb-5"">
-    <div class="container px-5 py-5">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold display-6">
-                JENIS-JENIS <span class="text-success">SAMPAH</span>
-            </h2>
-            <p class="text-muted lead" style="font-size: 18px;">
-                Pelajari jenis-jenis sampah yang ada dan cara pengelolaannya untuk menjaga lingkungan agar tetap bersih dan sehat.
-            </p>
-        </div>
+    <div class=" container px-5 py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold display-6">
+            JENIS-JENIS <span class="text-success">SAMPAH</span>
+        </h2>
+        <p class="text-muted lead" style="font-size: 18px;">
+            Pelajari jenis-jenis sampah yang ada dan cara pengelolaannya untuk menjaga lingkungan agar tetap bersih dan sehat.
+        </p>
+    </div>
 
-        <!-- Sampah Organik -->
-        <div class="row align-items-center py-4">
-            <div class="col-lg-6" data-aos="fade-right">
-                <div class="d-flex justify-content-center g-sampah">
-                    <img src="../../src/img/sampah/organik.jpg" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah Organik">
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div>
-                    <h3 class="mb-3 fw-bold">
-                        <i class="fas fa-leaf text-success me-2"></i>
-                        Sampah <span class="text-gradient">Organik</span>
-                    </h3>
-                    <p class="text-muted">
-                        Sampah organik terdiri dari bahan alami yang dapat terurai dengan mudah, seperti sisa makanan, daun, dan limbah dapur. Sampah ini dapat didaur ulang menjadi kompos yang berguna untuk meningkatkan kesuburan tanah.
-                    </p>
-                </div>
+    <!-- Sampah Organik -->
+    <div class="row align-items-center py-4">
+        <div class="col-lg-6" data-aos="fade-right">
+            <div class="d-flex justify-content-center g-sampah">
+                <img src="../../src/img/sampah/organik.jpg" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah Organik">
             </div>
         </div>
-
-        <!-- Sampah Anorganik -->
-        <div class="row align-items-center py-4">
-            <div class="col-lg-6 order-lg-2" data-aos="fade-left">
-                <div class="d-flex justify-content-center g-sampah">
-                    <img src="../../src/img/sampah/anorganik.jpg" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah Anorganik" >
-                </div>
-            </div>
-            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
-                <div>
-                    <h3 class="mb-3 fw-bold">
-                        <i class="fas fa-recycle text-primary me-2"></i>
-                        Sampah <span class="text-gradient">Anorganik</span>
-                    </h3>
-                    <p class="text-muted">
-                        Sampah anorganik, seperti plastik, kaca, logam, dan kertas, tidak terurai secara alami dan membutuhkan waktu yang lama untuk hancur. Banyak barang plastik dan kertas dapat didaur ulang untuk digunakan kembali.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sampah B3 -->
-        <div class="row align-items-center py-4">
-            <div class="col-lg-6" data-aos="fade-right">
-                <div class="d-flex justify-content-center g-sampah">
-                    <img src="../../src/img/sampah/b3.png" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah B3">
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div>
-                    <h3 class="mb-3 fw-bold">
-                        <i class="fas fa-biohazard text-danger me-2"></i>
-                        Sampah <span class="text-gradient">B3 (Berbahaya)</span>
-                    </h3>
-                    <p class="text-muted">
-                        Sampah B3 mencakup bahan-bahan berbahaya seperti bahan kimia, baterai, lampu neon, dan limbah medis yang dapat mencemari lingkungan jika tidak dikelola dengan hati-hati.
-                    </p>
-                </div>
+        <div class="col-lg-6" data-aos="fade-left">
+            <div>
+                <h3 class="mb-3 fw-bold">
+                    <i class="fas fa-leaf text-success me-2"></i>
+                    Sampah <span class="text-gradient">Organik</span>
+                </h3>
+                <p class="text-muted">
+                    Sampah organik terdiri dari bahan alami yang dapat terurai dengan mudah, seperti sisa makanan, daun, dan limbah dapur. Sampah ini dapat didaur ulang menjadi kompos yang berguna untuk meningkatkan kesuburan tanah.
+                </p>
             </div>
         </div>
     </div>
+
+    <!-- Sampah Anorganik -->
+    <div class="row align-items-center py-4">
+        <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+            <div class="d-flex justify-content-center g-sampah">
+                <img src="../../src/img/sampah/anorganik.jpg" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah Anorganik">
+            </div>
+        </div>
+        <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+            <div>
+                <h3 class="mb-3 fw-bold">
+                    <i class="fas fa-recycle text-primary me-2"></i>
+                    Sampah <span class="text-gradient">Anorganik</span>
+                </h3>
+                <p class="text-muted">
+                    Sampah anorganik, seperti plastik, kaca, logam, dan kertas, tidak terurai secara alami dan membutuhkan waktu yang lama untuk hancur. Banyak barang plastik dan kertas dapat didaur ulang untuk digunakan kembali.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sampah B3 -->
+    <div class="row align-items-center py-4">
+        <div class="col-lg-6" data-aos="fade-right">
+            <div class="d-flex justify-content-center g-sampah">
+                <img src="../../src/img/sampah/b3.png" class="img-fluid img-sampah rounded shadow w-75" alt="Sampah B3">
+            </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+            <div>
+                <h3 class="mb-3 fw-bold">
+                    <i class="fas fa-biohazard text-danger me-2"></i>
+                    Sampah <span class="text-gradient">B3 (Berbahaya)</span>
+                </h3>
+                <p class="text-muted">
+                    Sampah B3 mencakup bahan-bahan berbahaya seperti bahan kimia, baterai, lampu neon, dan limbah medis yang dapat mencemari lingkungan jika tidak dikelola dengan hati-hati.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
 </section>
 
-
-<!-- dampak -->
+<!-- Dampak Sampah Section -->
 <section id="dampak-sampah" class="pt-5 text-dark">
     <div class="container py-5">
-        <div class="text-center mb-3">
-            <h2 class="fw-bold display-6">
-                KENALI <span class="text-danger">DAMPAK NEGATIF SAMPAH</span>
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-5" style="color: #333;">
+                KENALI <span class="text-gradient">DAMPAK NEGATIF SAMPAH</span>
             </h2>
             <p class="text-muted lead">
                 Pelajari dampak buruk yang ditimbulkan oleh sampah yang tidak terkelola dengan baik terhadap lingkungan dan kehidupan manusia.
             </p>
         </div>
 
-        <div id="carouselDampakSampah" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner py-5">
-                <!-- Slide Pertama -->
-                <div class="carousel-item active">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-9">
-                            <div class="card border-0 shadow-lg">
-                                <div class="card-body text-center">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/NK0qhKmhX_o"
-                                        title="Dampak Sampah pada Lingkungan"
-                                        class="img-fluid mb-4"
-                                        style="border-radius: 15px; width: 100%; height: 300px;"
-                                        allowfullscreen>
-                                    </iframe>
-                                    <h5 class="card-title fw-bold">Dampak Sampah pada Lingkungan</h5>
-                                    <p class="card-text text-muted">
-                                        Sampah yang tidak terkelola dengan baik menyebabkan pencemaran tanah, air, dan udara, yang dapat membahayakan ekosistem serta kesehatan manusia.
-                                    </p>
-                                    <a href="https://www.youtube.com/watch?v=NK0qhKmhX_o" class="btn btn-danger text-white mt-3">
-                                        Tonton Video
-                                    </a>
+        <!-- Carousel -->
+        <div id="carouselDampakSampah" class="carousel slide rounded-4" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-inner">
+                <?php foreach ($carouselItems as $index => $item): ?>
+                    <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="card border-0 p-3">
+                                    <div class="card-body text-center bg-gradient uniform-card" style="border-radius: 20px;">
+                                        <div class="video-container mb-4">
+                                            <iframe
+                                                src="<?= htmlspecialchars($item['video_embed']) ?>"
+                                                title="<?= htmlspecialchars($item['title']) ?>"
+                                                class="video-embed shadow-sm"
+                                                style="width:700px; height:300px; border-radius:10px;"
+                                                allowfullscreen>
+                                                
+                                            </iframe>
+                                        </div>
+                                        <h5 class="card-title fw-bold mb-3" style="color: #2c3e50;"><?= htmlspecialchars($item['title']) ?></h5>
+                                        <div>
+                                            <a href="<?= htmlspecialchars($item['url_video']) ?>" class="btn btn-danger text-white mt-3 px-4 shadow-sm">
+                                                Tonton Video
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Slide Kedua -->
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="card border-0 shadow-lg">
-                                <div class="card-body text-center">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/g91bAP7iSlE"
-                                        title="Animasi Dampak Membuang Sampah"
-                                        class="img-fluid mb-4"
-                                        style="border-radius: 15px; width: 100%; height: 300px;"
-                                        allowfullscreen>
-                                    </iframe>
-                                    <h5 class="card-title fw-bold">Animasi Dampak Sampah</h5>
-                                    <p class="card-text text-muted">
-                                        Video animasi yang menunjukkan bagaimana dampak membuang sampah sembarangan dapat merusak lingkungan dan kesehatan manusia.
-                                    </p>
-                                    <a href="https://www.youtube.com/watch?v=g91bAP7iSlE" class="btn btn-danger text-white mt-3">
-                                        Tonton Video
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide Ketiga -->
-                <div class="carousel-item">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="card border-0 shadow-lg">
-                                <div class="card-body text-center">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/lNjJU563xMk"
-                                        title="Bahaya Sampah Plastik bagi Ekosistem Laut dan Biota Laut"
-                                        class="img-fluid mb-4"
-                                        style="border-radius: 15px; width: 100%; height: 300px;"
-                                        allowfullscreen>
-                                    </iframe>
-                                    <h5 class="card-title fw-bold">Bahaya Sampah Plastik bagi Ekosistem Laut</h5>
-                                    <p class="card-text text-muted">
-                                        Sampah plastik di laut menyebabkan kerusakan besar pada ekosistem laut, termasuk mikroplastik yang merusak biota seperti ikan dan penyu.
-                                    </p>
-                                    <a href="https://www.youtube.com/watch?v=lNjJU563xMk" class="btn btn-danger text-white mt-3">
-                                        Tonton Video
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
-            <!-- Tombol Navigasi dengan Icon -->
+            <!-- Tombol Navigasi -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselDampakSampah" data-bs-slide="prev">
-                <span class="fa fa-chevron-left text-dark fs-3" aria-hidden="true"></span>
+                <span class="fa fa-chevron-left text-danger fs-3" aria-hidden="true"></span>
                 <span class="visually-hidden">Sebelumnya</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselDampakSampah" data-bs-slide="next">
-                <span class="fa fa-chevron-right text-dark fs-3" aria-hidden="true"></span>
+                <span class="fa fa-chevron-right text-danger fs-3" aria-hidden="true"></span>
                 <span class="visually-hidden">Selanjutnya</span>
             </button>
         </div>
     </div>
 </section>
+
 
 <!-- kelola sampah -->
 <section class="kelola-sampah py-5">
@@ -264,3 +225,12 @@
     </div>
     <a href="https://youtu.be/pnuiEGuThsI" class="btn-custom mt-3" target="_blank" style="text-decoration: none;">Tonton Video Lengkapnya</a>
 </section>
+
+
+<script>
+    var myCarousel = document.getElementById('carouselDampakSampah');
+    var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 3000, // Interval 4 detik
+        ride: 'carousel' // Memulai carousel otomatis
+    });
+</script>

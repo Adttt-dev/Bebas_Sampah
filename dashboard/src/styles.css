@@ -19,6 +19,7 @@ body {
   color: #fff;
   transition: all 0.3s ease;
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+  
 }
 
 .sidebar.collapsed {

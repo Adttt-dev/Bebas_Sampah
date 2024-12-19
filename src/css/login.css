@@ -1,71 +1,75 @@
 body {
-  background: linear-gradient(to bottom right, #00774bc6, #4e5f4d57);
-  font-family: "Arial", sans-serif;
-  height: 100vh;
+  background-color: #f5f5f5;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
 }
 
-.login-container {
-  background-color: #fff;
+.container {
+  background-color: white;
   border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+  max-width: 800px;
   width: 100%;
-  max-width: 400px;
 }
 
-.login-container h1 {
-  text-align: center;
-  color: #34c38f;
-  margin-bottom: 1.5rem;
+.left,
+.right {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-container .form-label {
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
+
+.left h2,
+.right h2 {
   font-weight: bold;
+}
+
+.left .social-icons {
+  margin: 20px 0;
+}
+
+.left .social-icons a {
+  margin: 0 10px;
   color: #333;
+  font-size: 20px;
 }
 
-.login-container .btn-primary {
-  background-color: #34c38f;
+.left .form-control {
+  margin-bottom: 20px;
+}
+
+.left .btn-primary {
+  background-color: #00c6ff;
   border: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 10px 20px;
+  border-radius: 20px;
 }
 
-.login-container .btn-primary:hover {
-  background-color: #28a745;
-  transform: scale(1.03);
+.right .btn-outline-light {
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
 }
 
-.login-container .error-message {
-  color: #dc3545;
-  text-align: center;
-  font-size: 14px;
-  margin-bottom: 1rem;
-}
-
-a {
-  text-decoration: none;
-  color: #34c38f;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 1rem;
-  text-align: center;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #28a745;
-}
-
-.input-group-text {
-  background-color: #f8f9fa;
-  border: 1px solid #ced4da;
-}
-
-input.form-control:focus {
-  border-color: #34c38f;
-  box-shadow: 0 0 5px rgba(52, 195, 143, 0.5);
+.right .btn-outline-light:hover {
+  background-color: white;
+  color: black;
 }

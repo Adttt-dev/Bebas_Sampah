@@ -36,12 +36,12 @@
                     <span>Saran</span>
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a href="../page/logout.php" class="nav-link">
-                    <i class="bi bi-gear"></i>
-                    <span>Settings</span>
+            <li class="nav-item">
+                <a href="../page/video.php" class="nav-link">
+                    <i class="bi bi-play-circle"></i>
+                    <span>Video</span>
                 </a>
-            </li> -->
+            </li>
             <li class="nav-item mt-auto">
                 <a href="../database/logout.php" class="nav-link text-danger">
                     <i class="bi bi-box-arrow-right"></i>

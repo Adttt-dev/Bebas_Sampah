@@ -13,7 +13,6 @@
 <body>
 
     <!-- Sidebar -->
-    <!-- Sidebar -->
     <nav class="sidebar d-flex flex-column">
         <div class="py-3 text-center fs-5 fw-bold border-bottom">
             <span class="sidebar-text">Admin</span>
@@ -32,13 +31,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../page/saran.php" class="nav-link active">
+                <a href="../page/saran.php" class="nav-link">
                     <i class="bi bi-journal-text"></i>
                     <span>Saran</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="../page/video.php" class="nav-link">
+                <a href="../page/video.php" class="nav-link active">
                     <i class="bi bi-play-circle"></i>
                     <span>Video</span>
                 </a>
@@ -60,7 +59,7 @@
         include '../component/header.php';
 
 
-        include '../component/saran.php';
+        include '../component/video.php';
 
         include '../component/footer.php';
 

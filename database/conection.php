@@ -27,10 +27,15 @@ function tambah($data)
     $laporan = htmlspecialchars($data["laporan"]);
     $lokasi = htmlspecialchars($data["lokasi"]);
     $pelapor = htmlspecialchars($data["pelapor"]);
-    $query = "INSERT INTO laporan VALUES ('', '$laporan', '$lokasi', '$pelapor')";
+
+    // Masukkan hanya kolom yang perlu diisi
+    $query = "INSERT INTO laporan (laporan, lokasi, pelapor) VALUES ('$laporan', '$lokasi', '$pelapor')";
+
     mysqli_query($conection, $query);
+
     return mysqli_affected_rows($conection);
 }
+
 
 // delete laporan
 function deleteLaporan($id)
@@ -52,7 +57,7 @@ function deleteSaran($id)
 // update
 function update($data)
 {
-    global $conection;                              
+    global $conection;
     $id = $data['id'];
     $laporan = htmlspecialchars($data['laporan']);
     $lokasi = htmlspecialchars($data['lokasi']);
@@ -188,9 +193,64 @@ function updateSaran($data)
     mysqli_stmt_close($stmt);
 
     if ($affectedRows === 0) {
-        return -1; 
+        return -1;
     }
 
     // Return the number of affected rows (greater than 0 indicates success)
     return $affectedRows;
 }
+
+
+// edukasi
+
+function getCarouselItems()
+{
+    global $conection;
+    $query = "SELECT * FROM edukasi_yt";
+    return query($query);
+}
+
+function updateVideo($data)
+{
+    global $conection;
+    $id = $data['id'];
+    $title = htmlspecialchars($data['title']);
+    $url_video = htmlspecialchars($data['url_video']);
+    $video_embed = htmlspecialchars($data['video_embed']);
+
+    // Query untuk update data
+    $query = "UPDATE edukasi_yt SET 
+                title = '$title', 
+                url_video = '$url_video', 
+                video_embed = '$video_embed' 
+              WHERE id = $id";
+
+    mysqli_query($conection, $query);
+
+    return mysqli_affected_rows($conection);
+}
+
+
+function deleteVideo($id)
+{
+    global $conection;
+    mysqli_query($conection, "DELETE FROM edukasi_yt WHERE id = $id");
+    return mysqli_affected_rows($conection);
+}
+
+function tambahVideo($data)
+{
+    global $conection;
+
+    $title = htmlspecialchars($data["title"]);
+    $url_video = htmlspecialchars($data["url_video"]); // Sesuaikan dengan nama field di form
+    $video_embed = htmlspecialchars($data["video_embed"]);
+
+    $query = "INSERT INTO edukasi_yt (title, url_video, video_embed) 
+              VALUES ('$title', '$url_video', '$video_embed')";
+
+    mysqli_query($conection, $query);
+
+    return mysqli_affected_rows($conection);
+}
+
