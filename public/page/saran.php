@@ -22,9 +22,8 @@
 
     <?php
     include '../component/navbar.php';
-
     include '../component/saran.php';
-
+    include '../component/backtop.php';
     include '../component/footer.php';
     ?>
 

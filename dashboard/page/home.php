@@ -58,7 +58,7 @@
         include '../component/header.php';
 
         include '../component/menuHeader.php';
-
+        include '../component/foto.php';
         include '../component/footer.php';
 
 

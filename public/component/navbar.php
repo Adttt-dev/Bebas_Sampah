@@ -18,10 +18,16 @@
             color: white;
             text-decoration: none;
         }
+<<<<<<< HEAD
 
         .navbar-orange {
             background-color: #FFA500;
         }
+=======
+        .navbar-orange {
+    background-color: #FFA500;
+}
+>>>>>>> 03d84bd5bf17fc591669787a7570ec2d0817731e
     </style>
 </head>
 

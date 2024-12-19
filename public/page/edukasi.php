@@ -28,7 +28,7 @@
     include '../component/navbar.php';
 
     include '../component/menuEdukasi.php';
-
+    include '../component/backtop.php';
     include '../component/footer.php';
     ?>
 
