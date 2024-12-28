@@ -1,65 +1,87 @@
 <?php
 session_start();
-if (isset($_SESSION["login"])) {
-    header("Location: ./page/home.php");
+require './database/conection.php';
+
+// Cek apakah pengguna sudah login
+if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+    if ($_SESSION['role'] === 'admin') {
+        header("Location: ../dashboard/page/home.php");
+    } else {
+        header("Location: ../public/page/home.php");
+    }
     exit;
 }
 
-require './database/conection.php';
-
-// jika tombol submit sudah di klik
+// Proses login jika form disubmit
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
+    $username = mysqli_real_escape_string($conection, $_POST['username']);
     $password = $_POST['password'];
-    $result = mysqli_query($conection, "SELECT * FROM hanya_admin WHERE username = '$username'");
+
+    // Cek username di database menggunakan prepared statement untuk keamanan
+    $query = "SELECT * FROM users WHERE username = ?";
+    $stmt = mysqli_prepare($conection, $query);
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
+
+        // Verifikasi password menggunakan password_verify
         if (password_verify($password, $row['password'])) {
-            $_SESSION["login"] = true;
-            header("Location: ./page/home.php");
+            // Set session
+            $_SESSION['login'] = true;
+            $_SESSION['role'] = $row['role'];
+            $_SESSION['username'] = $row['username']; // Menambahkan username ke session
+
+            // Redirect berdasarkan role
+            if ($row['role'] === 'admin') {
+                header("Location: ../dashboard/page/home.php");
+            } else {
+                header("Location: ../public/page/home.php");
+            }
             exit;
+        } else {
+            $error = "Password salah!";
         }
+    } else {
+        $error = "Username tidak ditemukan!";
     }
-    $error = true;
 }
 ?>
 
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Sign In / Sign Up</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="../src/css/log.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container">
-        <div class="left">
-            <?php if (isset($error)) { ?>
-                <p class="error-message show">Username atau Password Salah!</p>
-            <?php } ?>
-
-            <h2 class="py-5">Sign in</h2>
-            <!-- Jika ada error -->
-            <form action="" method="POST">
-                <input type="text" name="username" id="username" class="form-control" placeholder="Username">
-                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                <a href="../public/page/home.php" class="text-decoration-none">kembali?</a>
-                <button type="submit" name="login" class="btn btn-primary mt-3 w-100">SIGN IN</button>
-            </form>
-            <!-- <a href="index.php" class="text-decoration-none"> -->
-            <!-- </a> -->
-        </div>
-        <div class="right">
-            <h2>Halo, Teman!</h2>
-            <p>Daftarkan diri anda dan mulai gunakan layanan kami segera</p>
-            <a href="register.php" class="text-decoration-none">
-                <button class="btn btn-outline-light w-100">SIGN UP</button>
-            </a>
-
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center">Login</h2>
+                <?php if (isset($error)) { ?>
+                    <p class="text-danger text-center"><?= $error; ?></p>
+                <?php } ?>
+                <form action="" method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" name="login" class="btn btn-primary w-100">Login</button>
+                    <a href="./register.php" class="d-block text-center mt-3">Daftar</a>
+                    <a href="../public/page/home.php" class="d-block text-center mt-3">Kembali</a>
+                </form>
+            </div>
         </div>
     </div>
 </body>

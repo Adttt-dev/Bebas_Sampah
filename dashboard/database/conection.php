@@ -4,47 +4,52 @@ $user = "root";
 $password = "";
 $databaseName = "db_web_bs";
 
-$conection = mysqli_connect($hostname, $user, $password, $databaseName,);
+// Membuat koneksi ke database
+$conection = mysqli_connect($hostname, $user, $password, $databaseName);
 
-// registrasi
+// Cek koneksi
+if (!$conection) {
+    die("Koneksi ke database gagal: " . mysqli_connect_error());
+}
+
+// Fungsi registrasi
 function register($data)
 {
     global $conection;
+
     $username = strtolower(stripslashes($data['username']));
-    $password = mysqli_real_escape_string($conection, $data['password']);
-    $password2 = mysqli_real_escape_string($conection, $data['password2']);
+    $password = $data['password'];
+    $password2 = $data['password2'];
+    $role = 'user'; // Default role adalah 'user'
 
-    // cek username sudah ada atau belum
-    // $result = mysqli_query($conection, "SELECT username FROM login_admin WHERE username = '$username'");
-    $result = mysqli_query($conection, "SELECT * FROM hanya_admin WHERE username = '$username'");
+    // Cek apakah username sudah ada
+    $stmt = $conection->prepare("SELECT username FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (mysqli_fetch_assoc($result)) {
-        echo
-        "<script>
-            alert('username sudah terdaftar!');
-        </script>";
+    if ($result->fetch_assoc()) {
+        echo "<script>alert('Username sudah terdaftar!');</script>";
         return false;
     }
 
-    // cek konfrimasi password
+    // Validasi konfirmasi password
     if ($password !== $password2) {
-        echo
-        "<script>
-            alert('konfirmasi  password tidak sesuai');
-        </script>";
+        echo "<script>alert('Konfirmasi password tidak sesuai');</script>";
         return false;
     }
 
-    // enkripsi password //PASSWORD_DEFAULT mengubah password menjadi karakter acak
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    // Enkripsi password
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    // tambahkan user baru ke database
-    $query = "INSERT INTO hanya_admin VALUES ('', '$username', '$password')";
-    // var_dump($password); die;
+    // Tambahkan user baru ke database
+    $stmt = $conection->prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $passwordHash, $role);
 
-
-    mysqli_query($conection, $query) or die(mysqli_error($conection));
-    return mysqli_affected_rows($conection);
+    if ($stmt->execute()) {
+        return $stmt->affected_rows;
+    } else {
+        die("Error: " . $stmt->error);
+    }
 }
-
 ?>

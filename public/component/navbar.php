@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +13,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../../src/css/nav.css">
     <link rel="stylesheet" href="../../src/css/main.css">
     <!-- Font Awesome -->
@@ -18,16 +22,52 @@
             color: white;
             text-decoration: none;
         }
-<<<<<<< HEAD
 
         .navbar-orange {
             background-color: #FFA500;
         }
-=======
-        .navbar-orange {
-    background-color: #FFA500;
-}
->>>>>>> 03d84bd5bf17fc591669787a7570ec2d0817731e
+
+        .btn.dropdown-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        .btn.dropdown-toggle:focus,
+        .btn.dropdown-toggle:active,
+        .btn.dropdown-toggle:focus:active {
+            box-shadow: none !important;
+            outline: none !important;
+            background-color: transparent !important;
+        }
+
+        .btn.dropdown-toggle::after {
+            display: none;
+        }
+
+        /* Styling for the username display */
+        .navbar .username {
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-size: 13px;
+            margin-left: 10px;
+            transition: color 0.3s ease-in-out;
+            background-color: #28a745;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .navbar .user-icon {
+            color: #28a745;
+            font-size: 30px;
+        }
+
+        .navbar .user-icon.logged-out {
+            color: #6c757d;
+        }
     </style>
 </head>
 
@@ -61,20 +101,30 @@
                     <li class="nav-item">
                         <a class="nav-link" href="saran.php">Saran</a>
                     </li>
+
+                    <div class="d-flex align-items-center ps-5">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" data-bs-toggle="dropdown" style="width: 100px; background: none; font-size: 25px;">
+                                <i class="fas fa-user-circle user-icon <?php echo (isset($_SESSION['login']) && $_SESSION['login'] === true) ? 'logged-in' : 'logged-out'; ?>"></i>
+                                <?php if (isset($_SESSION['login']) && $_SESSION['login'] === true && isset($_SESSION['username'])) { ?>
+                                    <span class="username"><?= $_SESSION['username']; ?></span>
+                                <?php } ?>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <?php if (isset($_SESSION['login']) && $_SESSION['login'] === true) { ?>
+                                    <li><a class="dropdown-item text-danger" href="../../dashboard/database/logout.php">Logout</a></li>
+                                <?php } else { ?>
+                                    <li><a class="dropdown-item" href="../../dashboard/index.php">Login</a></li>
+                                    <li><a class="dropdown-item" href="../../dashboard/register.php">Register</a></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    </div>
                 </ul>
-                <div class="ms-lg-3">
-                    <a href="../../dashboard/index.php">
-                        <button class="btn btn-primary">
-                            Login
-                        </button>
-                    </a>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../src/js/main.js"></script>
 </body>

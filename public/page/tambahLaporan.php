@@ -11,19 +11,18 @@
     <link rel="icon" href="../../src/img/earth.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../src/css/tambah.css">
-    <!-- <link rel="stylesheet" href="../../src/css/nav.css"> -->
     <link rel="stylesheet" href="../../src/css/main.css">
     <title>Lapor</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 </head>
 
 <body>
-<div id="map" style="height: 500px; width: 100%;"></div>
+    <div id="map" style="height: 500px; width: 100%;"></div>
 
     <?php
-include '../component/backtop.php';
+    include '../component/backtop.php';
     include '../component/insert.php';
     ?>
 

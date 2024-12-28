@@ -7,11 +7,11 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            height: 2000px; /* Untuk membuat scroll panjang */
+            /* height: 2000px; Untuk membuat scroll panjang */
             margin: 0;
         }
 
-        /* Desain tombol Back to Top */
+        /* Tombol Back to Top */
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -25,29 +25,49 @@
             font-size: 24px;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 9999;
+            display: none; /* Disembunyikan awalnya */
         }
 
-        /* Efek hover pada tombol */
         .back-to-top:hover {
             background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 600px) {
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Tombol Back to Top -->
     <button class="back-to-top" onclick="scrollToTop()">↑</button>
 
     <script>
-        // Fungsi untuk menggulir halaman ke atas
+        // Fungsi untuk scroll ke atas
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         }
-    </script>
 
+        // Tampilkan atau sembunyikan tombol saat scroll
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                backToTopButton.style.display = 'block'; // Tampilkan tombol
+            } else {
+                backToTopButton.style.display = 'none'; // Sembunyikan tombol
+            }
+        });
+    </script>
 </body>
 </html>
