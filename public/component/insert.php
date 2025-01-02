@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
 
 <link rel="stylesheet" href="../../src/css/tambah.css">
 
-<section class="insert py-5 mb-5">
+<section class="insert">
     <div class="container">
         <div class="form-container">
             <h2 class="form-title text-center">Form Tambah Laporan</h2>
@@ -50,7 +50,7 @@ if (isset($_POST["submit"])) {
                     <i class="fas fa-user"></i>
                 </div>
 
-                <div class="text-center mt-4">
+                <div class="text-center">
                     <button type="submit" name="submit" class="btn btn-primary w-100 mb-3">
                         <i class="fas fa-plus-circle me-2"></i>Tambah Laporan
                     </button>

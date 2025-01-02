@@ -2,7 +2,6 @@
 session_start();
 require './database/conection.php';
 
-// Cek apakah pengguna sudah login
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     if ($_SESSION['role'] === 'admin') {
         header("Location: ../dashboard/page/home.php");
@@ -12,7 +11,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     exit;
 }
 
-// Proses login jika form disubmit
+$error = "";
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conection, $_POST['username']);
     $password = $_POST['password'];
@@ -50,40 +49,55 @@ if (isset($_POST['login'])) {
 }
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../src/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Tambahkan SweetAlert -->
     <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-center">Login</h2>
-                <?php if (isset($error)) { ?>
-                    <p class="text-danger text-center"><?= $error; ?></p>
-                <?php } ?>
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" name="username" id="username" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" required>
-                    </div>
-                    <button type="submit" name="login" class="btn btn-primary w-100">Login</button>
-                    <a href="./register.php" class="d-block text-center mt-3">Daftar</a>
-                    <a href="../public/page/home.php" class="d-block text-center mt-3">Kembali</a>
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
 
+<div class="wrapper">
+    <form action="" method="POST">
+        <h1>Login</h1>
+        <div class="input-box">
+            <input type="text" name="username" placeholder="Username" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" name="password" placeholder="Password" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" name="login" class="btn">Login</button>
+        <div class="register-link">
+            <p>Belum memiliki akun? <a href="./register.php">Register</a></p>
+            <p><a href="../public/page/home.php">Kembali</a></p>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Menampilkan SweetAlert jika ada error -->
+<script>
+    <?php if (!empty($error)) { ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Login Gagal',
+            text: '<?= htmlspecialchars($error); ?>',
+            confirmButtonText: 'OK'
+        });
+    <?php } ?>
+</script>
+
+</body>
 </html>

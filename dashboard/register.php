@@ -9,13 +9,15 @@ if (isset($_SESSION["login"])) {
 }
 
 // Proses registrasi
-$success = false; // Variabel untuk menandai apakah registrasi berhasil
-if (isset($_POST['signup'])) {
+$success = false; // Menandai apakah registrasi berhasil
+$error = null; // Menampung pesan kesalahan
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
 
-    // Validasi username dan password
+    // Validasi input
     if (empty($username) || empty($password) || empty($password2)) {
         $error = "Semua field harus diisi!";
     } elseif ($password !== $password2) {
@@ -48,71 +50,55 @@ if (isset($_POST['signup'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="../src/css/login.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <h2 class="text-center">Sign Up</h2>
-                <!-- Jika ada error -->
-                <?php if (isset($error)) { ?>
-                    <p class="text-danger text-center"><?= $error; ?></p>
-                <?php } ?>
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" name="username" id="username" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password2" class="form-label">Konfirmasi Password</label>
-                        <input type="password" name="password2" id="password2" class="form-control" required>
-                    </div>
-                    <button type="submit" name="signup" class="btn btn-primary w-100">Sign Up</button>
-                </form>
-                <a href="index.php" class="d-block text-center mt-3">Sudah punya akun? Login di sini</a>
-            </div>
-        </div>
-    </div>
+  <div class="wrapper">
+    <form action="" method="POST">
+      <h1>Register</h1>
+      <div class="input-box">
+        <input type="text" name="username" placeholder="Username" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password2" placeholder="Konfirmasi Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <button type="submit" class="btn">Register</button>
+      <div class="register-link">
+        <p>Sudah punya akun? <a href="index.php">Login di sini</a></p>
+      </div>
+    </form>
+  </div>
 
-    <!-- Modal Box -->
-    <?php if ($success) { ?>
-        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="successModalLabel">Registrasi Berhasil</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Selamat! Registrasi berhasil. Silakan login untuk masuk ke akun Anda.
-                    </div>
-                    <div class="modal-footer">
-                        <a href="index.php" class="btn btn-primary">Login Sekarang</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script>
-        // Tampilkan modal jika registrasi berhasil
-        <?php if ($success) { ?>
-            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
-        <?php } ?>
-    </script>
+  <!-- Script untuk menampilkan popup -->
+  <script>
+    <?php if ($error): ?>
+      Swal.fire({
+        icon: 'error',
+        title: 'Registrasi Gagal',
+        text: '<?= htmlspecialchars($error) ?>',
+      });
+    <?php elseif ($success): ?>
+      Swal.fire({
+        icon: 'success',
+        title: 'Registrasi Berhasil',
+        text: 'Akun Anda berhasil dibuat!',
+      }).then(() => {
+        window.location.href = "index.php"; // Redirect ke halaman login
+      });
+    <?php endif; ?>
+  </script>
 </body>
-
 </html>
