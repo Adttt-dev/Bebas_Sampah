@@ -1,7 +1,6 @@
 <?php
 include '../../database/conection.php';
 
-// Menambahkan relasi untuk menampilkan username
 $saran = query('
     SELECT saran.id, 
            COALESCE(users.username, "Anonymous") AS username, 

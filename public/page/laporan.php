@@ -18,8 +18,7 @@
 
     <?php
     include '../component/navbar.php';
-    include '../component/hoverpad.php';
-    
+    include '../component/hoverpad.php'; 
     include '../component/read.php';
     include '../component/backtop.php';
     include '../component/footer.php';

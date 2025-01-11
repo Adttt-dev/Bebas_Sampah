@@ -1,16 +1,13 @@
 <?php
-// Pagination setup
 $rows_per_page = 3;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $rows_per_page;
 
-// Get total number of rows for pagination
 $total_rows_query = "SELECT COUNT(*) as count FROM laporan";
 $total_rows_result = query($total_rows_query);
 $total_rows = $total_rows_result[0]['count'];
 $total_pages = ceil($total_rows / $rows_per_page);
 
-// Get paginated data
 if (!isset($laporan[0]['username'])) {
     $query = "
         SELECT laporan.id, laporan.laporan, laporan.lokasi, laporan.gambar, laporan.tanggal, users.username
@@ -94,51 +91,7 @@ if (!isset($laporan[0]['username'])) {
                                 </button>
                             </td>
                         </tr>
-
-                        <!-- Edit Modal -->
-                        <div class="modal fade" id="editModal<?= $l['id'] ?>" tabindex="-1" aria-labelledby="editModalLabel<?= $l['id'] ?>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editModalLabel<?= $l['id'] ?>">Edit Laporan</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form action="../component/update.php" method="post">
-                                        <div class="modal-body">
-                                            <input type="hidden" name="id" value="<?= $l['id'] ?>">
-
-                                            <div class="mb-3">
-                                                <label for="laporan<?= $l['id'] ?>" class="form-label">Laporan</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="laporan" id="laporan<?= $l['id'] ?>"
-                                                        placeholder="Masukkan judul laporan" required value="<?= $l['laporan'] ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="lokasi<?= $l['id'] ?>" class="form-label">Lokasi</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="lokasi" id="lokasi<?= $l['id'] ?>"
-                                                        placeholder="Masukkan lokasi" required value="<?= $l['lokasi'] ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="gambar<?= $l['id'] ?>" class="form-label">Gambar</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="gambar" id="gambar<?= $l['id'] ?>"
-                                                        placeholder="Masukkan nama gambar" required value="<?= $l['gambar'] ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                            <button type="submit" name="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        <?php include 'modalLaporan.php'; ?>
                         <?php $i++; ?>
                     <?php } ?>
                 </tbody>
