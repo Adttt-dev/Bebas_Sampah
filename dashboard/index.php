@@ -32,6 +32,7 @@ if (isset($_POST['login'])) {
             $_SESSION['login'] = true;
             $_SESSION['role'] = $row['role'];
             $_SESSION['username'] = $row['username']; // Menambahkan username ke session
+            $_SESSION['user_id'] = $row['id']; // Menyimpan id pengguna di session
 
             // Redirect berdasarkan role
             if ($row['role'] === 'admin') {
@@ -60,7 +61,7 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="../src/css/login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Tambahkan SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Login</title>
 </head>
 
@@ -87,7 +88,6 @@ if (isset($_POST['login'])) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<!-- Menampilkan SweetAlert jika ada error -->
 <script>
     <?php if (!empty($error)) { ?>
         Swal.fire({

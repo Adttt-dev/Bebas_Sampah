@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const isLaporanFull = window.location.search.includes(
         "lihat_semua_laporan"
       );
-      if (!isLaporanFull) {
+      if (!isLaporanFull) {1 
         window.location.search =
           window.location.search + "&lihat_semua_laporan=1";
       } else {

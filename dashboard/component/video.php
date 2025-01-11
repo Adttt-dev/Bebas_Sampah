@@ -1,23 +1,6 @@
 <?php
 include '../../database/conection.php';
-$saran = query('SELECT * FROM edukasi_yt');
-
-
-// if (isset($_POST["submit"])) {
-//     if (tambah($_POST) > 0) {
-//         echo
-//         "<script>
-//             alert('Laporan berhasil ditambahkan');
-//             document.location.href='../page/video.php';
-//         </script>";
-//         die;
-//     } else {
-//         echo
-//         "<script>
-//             alert('Laporan gagal ditambahkan');
-//         </script>";
-//     }
-// }
+$video = query('SELECT * FROM edukasi_yt');
 ?>
 
 <style>
@@ -56,20 +39,20 @@ $saran = query('SELECT * FROM edukasi_yt');
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($saran as $s) { ?>
+                    <?php foreach ($video as $s) { ?>
                         <tr>
                             <td><?= $i; ?></td>
-                            <td class="truncate"><?= $s['title']; ?></td>
+                            <td class="truncate"><?= htmlspecialchars($s['title']); ?></td>
                             <td class="truncate"><a href="<?= $s['url_video']; ?>" target="_blank"><?= $s['url_video']; ?></a></td>
-                            <td><?= htmlspecialchars($s['video_embed']); ?></td>
+                            <td>
+                                <iframe src="<?= htmlspecialchars($s['video_embed']); ?>" style="width:100px; height:56px;" allowfullscreen></iframe>
+                            </td>
                             <td class="report-actions">
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $s['id'] ?>">
                                     <i class="bi bi-pencil me-1"></i>Edit
                                 </button>
-                                <button class="btn btn-danger btn-sm">
-                                    <a href="../component/deleteVideo.php?id=<?= $s['id'] ?>&redirect=../page/video.php" onclick="return confirm('Apakah anda yakin?')">
-                                        <i class="bi bi-trash me-1"></i>Delete
-                                    </a>
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $s['id'] ?>">
+                                    <i class="bi bi-trash me-1"></i>Delete
                                 </button>
                             </td>
                         </tr>
@@ -114,6 +97,25 @@ $saran = query('SELECT * FROM edukasi_yt');
                             </div>
                         </div>
 
+                        <!-- Delete Modal -->
+                        <div class="modal fade" id="deleteModal<?= $s['id'] ?>" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Konfirmasi Penghapusan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah Anda yakin ingin menghapus video ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <a href="../component/deleteVideo.php?id=<?= $s['id'] ?>&redirect=../page/video.php" class="btn btn-danger">Hapus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <?php $i++; ?>
                     <?php } ?>
                 </tbody>
@@ -154,3 +156,22 @@ $saran = query('SELECT * FROM edukasi_yt');
         </div>
     </div>
 </div>
+
+<script>
+    // AJAX for adding video
+    $(document).on('submit', 'form[action="../component/tambah_video.php"]', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('action'),
+            method: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                $('#addModal').modal('hide');
+                location.reload(); // Refresh page
+            },
+            error: function() {
+                alert('Terjadi kesalahan!');
+            }
+        });
+    });
+</script>

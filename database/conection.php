@@ -26,16 +26,70 @@ function tambah($data)
 
     $laporan = htmlspecialchars($data["laporan"]);
     $lokasi = htmlspecialchars($data["lokasi"]);
-    $pelapor = htmlspecialchars($data["pelapor"]);
+
+    $gambar = upload();
+    if (!$gambar) {
+        return false;
+    }
 
     // Masukkan hanya kolom yang perlu diisi
-    $query = "INSERT INTO laporan (laporan, lokasi, pelapor) VALUES ('$laporan', '$lokasi', '$pelapor')";
+    $query = "INSERT INTO laporan (laporan, lokasi, gambar) VALUES ('$laporan', '$lokasi', '$gambar')";
 
     mysqli_query($conection, $query);
 
     return mysqli_affected_rows($conection);
 }
 
+function upload()
+{
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
+
+    // cek apakah tidak ada gambar yang diupload
+    if ($error === 4) {
+        echo
+        "<script>
+            alert('Pilih gambar dulu!');
+        </script>";
+        return false;
+    }
+
+    // cek apakah yang diupload adalah gambar
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo
+        "<script>
+            alert('Bukan gambar!');
+        </script>";
+        return false;
+    }
+
+    // cek ukuran gambar
+    if ($ukuranFile > 2000000) {
+        echo
+        "<script>
+            alert('Ukuran gambar terlalu besar!');
+        </script>";
+        return false;
+    }
+
+    $namaFileBaru = uniqid('', true); 
+    $namaFileBaru .= '.' . $ekstensiGambar;
+
+    $folderTujuan = '../../database/img/';
+
+    // Lolos pengecekan, gambar siap diupload
+    if (move_uploaded_file($tmpName, $folderTujuan . $namaFileBaru)) {
+        return $namaFileBaru;
+    } else {
+        return false;
+    }
+}
 
 // delete laporan
 function deleteLaporan($id)
@@ -61,14 +115,26 @@ function update($data)
     $id = $data['id'];
     $laporan = htmlspecialchars($data['laporan']);
     $lokasi = htmlspecialchars($data['lokasi']);
-    $pelapor = htmlspecialchars($data['pelapor']);
 
+    // Periksa apakah ada gambar baru yang diunggah
+    if ($_FILES['gambar']['error'] === 4) {
+        // Jika tidak ada gambar baru, gunakan gambar lama
+        $gambar = $data['gambar_lama'];  // Asumsi gambar lama disertakan dalam data
+    } else {
+        // Jika ada gambar baru, proses upload gambar
+        $gambar = upload();
+        if (!$gambar) {
+            return false;  // Jika upload gagal, return false
+        }
+    }
 
-    // query insert data
-    $query = "UPDATE laporan SET laporan = '$laporan', lokasi = '$lokasi', pelapor = '$pelapor' WHERE id = $id";
+    // Query untuk update laporan
+    $query = "UPDATE laporan SET laporan = '$laporan', lokasi = '$lokasi', gambar = '$gambar' WHERE id = $id";
 
+    // Eksekusi query
     mysqli_query($conection, $query);
 
+    // Cek apakah query berhasil
     return mysqli_affected_rows($conection);
 }
 
@@ -200,57 +266,78 @@ function updateSaran($data)
     return $affectedRows;
 }
 
-
 // edukasi
 
+// Fungsi untuk mendapatkan data carousel (video edukasi)
 function getCarouselItems()
 {
     global $conection;
     $query = "SELECT * FROM edukasi_yt";
-    return query($query);
+    return query($query); // pastikan fungsi query aman (menggunakan prepared statements jika memungkinkan)
 }
 
+// Fungsi untuk mengupdate video
 function updateVideo($data)
 {
     global $conection;
-    $id = $data['id'];
+    $id = (int)$data['id']; // pastikan id adalah integer
     $title = htmlspecialchars($data['title']);
     $url_video = htmlspecialchars($data['url_video']);
     $video_embed = htmlspecialchars($data['video_embed']);
 
-    // Query untuk update data
-    $query = "UPDATE edukasi_yt SET 
-                title = '$title', 
-                url_video = '$url_video', 
-                video_embed = '$video_embed' 
-              WHERE id = $id";
+    // Query untuk update data dengan prepared statements
+    $query = "UPDATE edukasi_yt SET title = ?, url_video = ?, video_embed = ? WHERE id = ?";
+    $stmt = mysqli_prepare($conection, $query);
 
-    mysqli_query($conection, $query);
+    // Bind parameter
+    mysqli_stmt_bind_param($stmt, "sssi", $title, $url_video, $video_embed, $id);
 
-    return mysqli_affected_rows($conection);
+    // Eksekusi query
+    mysqli_stmt_execute($stmt);
+
+    // Periksa apakah ada perubahan pada data
+    return mysqli_stmt_affected_rows($stmt);
 }
 
-
+// Fungsi untuk menghapus video
 function deleteVideo($id)
 {
     global $conection;
-    mysqli_query($conection, "DELETE FROM edukasi_yt WHERE id = $id");
-    return mysqli_affected_rows($conection);
+    $id = (int)$id; // pastikan id adalah integer
+
+    // Query untuk menghapus video
+    $query = "DELETE FROM edukasi_yt WHERE id = ?";
+    $stmt = mysqli_prepare($conection, $query);
+
+    // Bind parameter
+    mysqli_stmt_bind_param($stmt, "i", $id);
+
+    // Eksekusi query
+    mysqli_stmt_execute($stmt);
+
+    // Periksa apakah ada perubahan pada data
+    return mysqli_stmt_affected_rows($stmt);
 }
 
+// Fungsi untuk menambah video
 function tambahVideo($data)
 {
     global $conection;
 
     $title = htmlspecialchars($data["title"]);
-    $url_video = htmlspecialchars($data["url_video"]); // Sesuaikan dengan nama field di form
+    $url_video = htmlspecialchars($data["url_video"]);
     $video_embed = htmlspecialchars($data["video_embed"]);
 
-    $query = "INSERT INTO edukasi_yt (title, url_video, video_embed) 
-              VALUES ('$title', '$url_video', '$video_embed')";
+    // Query untuk insert data dengan prepared statements
+    $query = "INSERT INTO edukasi_yt (title, url_video, video_embed) VALUES (?, ?, ?)";
+    $stmt = mysqli_prepare($conection, $query);
 
-    mysqli_query($conection, $query);
+    // Bind parameter
+    mysqli_stmt_bind_param($stmt, "sss", $title, $url_video, $video_embed);
 
-    return mysqli_affected_rows($conection);
+    // Eksekusi query
+    mysqli_stmt_execute($stmt);
+
+    // Periksa apakah ada perubahan pada data
+    return mysqli_stmt_affected_rows($stmt);
 }
-

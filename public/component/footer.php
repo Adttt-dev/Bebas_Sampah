@@ -12,34 +12,32 @@
                 <p class="text-success">Perduli dengan sampah &hearts;</p>
             </div>
 
-            <!-- Navigasi 1 -->
             <div class="col-lg-3 mb-4">
                 <h4 class="fw-bold mb-3">Tentang Kami</h4>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Tentang Program</a>
+                        <a href="../page/home.php" class="text-white text-decoration-none">Tentang Program</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Layanan</a>
+                        <a href="../page/home.php" class="text-white text-decoration-none">Layanan</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Hubungi Kami</a>
+                        <a href="../page/about.php" class="text-white text-decoration-none">Hubungi Kami</a>
                     </li>
                 </ul>
             </div>
 
-            <!-- Navigasi 2 -->
             <div class="col-lg-3 mb-4">
                 <h4 class="fw-bold mb-3">Layanan Kami</h4>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Bank Sampah</a>
+                        <a href="../page/edukasi.php" class="text-white text-decoration-none">Edukasi Sampah</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Pengangkutan Sampah</a>
+                        <a href="../page/peta.php" class="text-white text-decoration-none">Peta Pembuangan Sampah</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Edukasi Lingkungan</a>
+                        <a href="../page/laporan.php" class="text-white text-decoration-none">Laporan Pembuangan Sampah Ilegal</a>
                     </li>
                 </ul>
             </div>
@@ -49,19 +47,19 @@
                 <h4 class="fw-bold mb-3">Hubungi Kami</h4>
                 <ul class="list-unstyled">
                     <li>
-                        <i class="bi bi-envelope"></i> <a href="mailto:info@kelolasampah.com" class="text-white text-decoration-none">info@kelolasampah.com</a>
+                        <i class="bi bi-envelope"></i> <a href="mailto:bebassampah123@gmail.com" class="text-white text-decoration-none">bebassampah123@gmail.com</a>
                     </li>
                     <li>
-                        <i class="bi bi-telephone"></i> <a href="tel:+6281234567890" class="text-white text-decoration-none">+62 812 3456 7890</a>
+                        <i class="bi bi-telephone"></i> <a href="tel:+6281234567890" class="text-white text-decoration-none">082278879608</a>
                     </li>
                     <li>
-                        <i class="bi bi-geo-alt"></i> <span>Jalan apa aja</span>
+                        <i class="bi bi-geo-alt"></i> <span>Jalan Jendral Sudirman</span>
                     </li>
                 </ul>
             </div>
         </div>
         <hr class="border-secondary">
         <div class="text-center mt-3">
-            <p class="small mb-0">&copy; 2024 Bebas sampah.</p>
+            <p class="small">&copy; 2024 Bebas sampah.</p>
         </div>
     </div>

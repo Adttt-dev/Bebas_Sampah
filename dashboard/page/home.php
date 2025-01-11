@@ -49,7 +49,7 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'admin') {
                     <span>Video</span>
                 </a>
             </li>
-            <li class="nav-item mt-auto">
+            <li class="nav-item mt-auto">       
                 <a href="../database/logout.php" class="nav-link text-danger">
                     <i class="bi bi-box-arrow-right"></i>
                     <span>Logout</span>

@@ -15,10 +15,6 @@
         crossorigin="anonymous">
     <link rel="icon" href="../../src/img/earth.png">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="../../src/css/nav.css"> -->
-    <link rel="stylesheet" href="../../src/css/main.css">
-    <link rel="stylesheet" href="../../src/css/menu.css">
-    <link rel="stylesheet" href="../../src/css/edu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
@@ -27,8 +23,7 @@
     <?php
     include '../component/navbar.php';
     include '../component/hoverpad.php';
-
-    include '../component/menuEdukasi.php';
+    include '../component/about.php';
     include '../component/backtop.php';
     include '../component/footer.php';
     ?>

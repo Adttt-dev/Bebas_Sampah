@@ -73,7 +73,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light py-3 sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light py-2 sticky-top">
         <div class="container">
             <!-- Navbar Brand -->
             <a class="navbar-brand d-flex align-items-center" href="#">
@@ -100,6 +100,9 @@ if (session_status() == PHP_SESSION_NONE) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="saran.php">Saran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">Tentang Kami</a>
                     </li>
 
                     <div class="d-flex align-items-center ps-5">
@@ -130,3 +133,5 @@ if (session_status() == PHP_SESSION_NONE) {
 </body>
 
 </html>
+
+

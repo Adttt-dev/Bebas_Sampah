@@ -1,7 +1,7 @@
 <?php
 // Mulai sesi
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 
 // Koneksi ke database
@@ -9,9 +9,9 @@ include '../../database/conection.php';
 
 // Cek apakah user sudah login
 if (!isset($_SESSION['login'])) {
-    $login_required = true; // Menandakan bahwa user harus login
+  $login_required = true; // Menandakan bahwa user harus login
 } else {
-    $login_required = false; // User sudah login
+  $login_required = false; // User sudah login
 }
 
 // Variabel untuk status pengiriman saran
@@ -19,15 +19,30 @@ $status_message = '';
 
 // Jika tombol submit ditekan
 if (isset($_POST['submit'])) {
-    if ($login_required) {
-        $status_message = 'login'; // Status untuk login diperlukan
+  if ($login_required) {
+    $status_message = 'login'; // Status untuk login diperlukan
+  } else {
+    // Validasi input form
+    $kategori = $_POST['kategori'];
+    $saran = $_POST['saran'];
+
+    if (empty($kategori) || empty($saran)) {
+      $status_message = 'error'; // Jika kategori atau saran kosong
     } else {
-        if (tambahSaran($_POST) > 0) {
-            $status_message = 'success'; // Saran berhasil ditambahkan
-        } else {
-            $status_message = 'error'; // Saran gagal ditambahkan
-        }
+      // Ambil user_id dari session
+      $user_id = $_SESSION['user_id'] ?? NULL;
+
+      // Query untuk menambahkan saran ke database
+      $query = "INSERT INTO saran (saran, kategori, tanggal_pengajuan, user_id) 
+                      VALUES ('$saran', '$kategori', NOW(), '$user_id')";
+      $result = mysqli_query($conection, $query); // Asumsikan koneksi sudah ada
+      if ($result) {
+        $status_message = 'success'; // Saran berhasil ditambahkan
+      } else {
+        $status_message = 'error'; // Saran gagal ditambahkan
+      }
     }
+  }
 }
 ?>
 
@@ -52,6 +67,7 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
 </section>
+
 
 <!-- Form Tambah Saran -->
 <section id="saran" class="form-section py-5 mb-5">
@@ -125,7 +141,7 @@ if (isset($_POST['submit'])) {
       Swal.fire({
         icon: 'error',
         title: 'Saran gagal ditambahkan!',
-        text: 'Terjadi kesalahan saat menambahkan saran.',
+        text: 'Terjadi kesalahan saat menambahkan saran. Pastikan data sudah lengkap.',
         confirmButtonText: 'OK',
       });
     <?php endif; ?>

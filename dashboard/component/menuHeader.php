@@ -14,19 +14,17 @@ $saran = $show_saran_all
     ? query("SELECT * FROM saran")
     : query("SELECT * FROM saran LIMIT 3");
 
-
-// Ambil jumlah laporan, saran, aksi, dan total
+// Ambil jumlah laporan, saran, video, dan total
 $total_laporan = query("SELECT COUNT(*) as total FROM laporan")[0]['total'];
-$total_count = $total_laporan;
 $total_saran = query("SELECT COUNT(*) as total FROM saran")[0]['total'];
-$total_count = $total_laporan;
+$total_video = query("SELECT COUNT(*) as total FROM edukasi_yt")[0]['total'];
 
 // Hitung total keseluruhan
-$total_keseluruhan = $total_laporan + $total_saran;
+$total_keseluruhan = $total_laporan + $total_saran + $total_video;
 ?>
 
 <style>
-    h5{
+    h5 {
         text-align: center;
     }
 </style>
@@ -58,14 +56,14 @@ $total_keseluruhan = $total_laporan + $total_saran;
                 </div>
             </div>
         </div>
-        <!-- Aksi -->
+        <!-- Video -->
         <div class="col-lg-3 col-md-6">
             <div class="card kpi-card bg-warning text-white">
                 <div class="card-body d-flex align-items-center">
-                    <i class="bi bi-lightning-fill fs-1 me-3"></i>
+                    <i class="bi bi-play-circle fs-1 me-3"></i>
                     <div class="px-2">
-                        <p class="fs-3 fw-bold">Aksi</p>
-                        <h5>0</h5>
+                        <p class="fs-3 fw-bold">Video</p>
+                        <h5><?= $total_video; ?></h5>
                     </div>
                 </div>
             </div>
@@ -86,8 +84,6 @@ $total_keseluruhan = $total_laporan + $total_saran;
 </div>
 
 <?php 
-
 include 'menuLaporan.php';
 include 'menuSaran.php';
-
 ?>

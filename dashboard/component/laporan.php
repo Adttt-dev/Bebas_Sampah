@@ -1,12 +1,44 @@
-<?php
+<?php 
 include '../../database/conection.php';
-$laporan = query('SELECT * FROM laporan');
+
+$query = "
+    SELECT laporan.id, laporan.laporan, laporan.lokasi, laporan.gambar, laporan.tanggal, users.username
+    FROM laporan
+    INNER JOIN users ON laporan.user_id = users.id
+    ORDER BY laporan.tanggal DESC
+";
+
+$laporan = query($query);
 ?>
 
 <style>
     a {
         text-decoration: none;
         color: white;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .pagination a {
+        margin: 0 5px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        color: #000;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .pagination a.active {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .pagination a:hover {
+        background-color: #ddd;
     }
 </style>
 
@@ -15,83 +47,113 @@ $laporan = query('SELECT * FROM laporan');
     <div class="container py-3">
         <div class="table-container container py-4 shadow-lg">
             <h4 class="text-dark fw-bold mb-3">Laporan</h4>
+            <input type="text" id="searchInput" class="form-control mb-3" placeholder="Cari data...">
             <table class="table table-hover" id="reportTable">
                 <thead>
                     <tr>
-                        <th style="width: 5%;">No</th>
-                        <th style="width: 35%;">Laporan</th>
-                        <th style="width: 20%;">Lokasi</th>
-                        <th style="width: 20%;">Pelapor</th>
-                        <th style="width: 20%;">Aksi</th>
+                        <th style="width: 5%">No</th>
+                        <th style="width: 10%">Username</th>
+                        <th style="width: 30%">Laporan</th>
+                        <th style="width: 15%">Lokasi</th>
+                        <th style="width: 5%">Gambar</th>
+                        <th style="width: 22%">Tanggal</th>
+                        <th width="20%">Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     <?php $i = 1; ?>
                     <?php foreach ($laporan as $l) { ?>
-                        <tr>
+                        <tr data-id="<?= $l['id'] ?>" data-username="<?= htmlspecialchars($l['username']) ?>"
+                            data-laporan="<?= htmlspecialchars($l['laporan']) ?>" data-lokasi="<?= htmlspecialchars($l['lokasi']) ?>"
+                            data-tanggal="<?= htmlspecialchars(date('d M Y, H:i', strtotime($l['tanggal']))) ?>"
+                            data-gambar="<?= '../../database/img/' . htmlspecialchars($l['gambar']) ?>">
                             <td><?= $i; ?></td>
-                            <td><?= $l['laporan']; ?></td>
-                            <td><?= $l['lokasi']; ?></td>
-                            <td><?= $l['pelapor']; ?></td>
+                            <td><?= htmlspecialchars($l['username']); ?></td>
+                            <td><?= htmlspecialchars($l['laporan']); ?></td>
+                            <td><?= htmlspecialchars($l['lokasi']); ?></td>
+                            <td>
+                                <img src="../../database/img/<?= htmlspecialchars($l['gambar']); ?>" alt="Gambar Laporan" style="object-fit: cover; width:50px; height:50px;">
+                            </td>
+                            <td><?php
+                                if ($l['tanggal']) {
+                                    echo htmlspecialchars(date('d M Y, H:i', strtotime($l['tanggal'])));
+                                } else {
+                                    echo 'Tanggal tidak tersedia';
+                                }
+                                ?></td>
                             <td class="report-actions">
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $l['id'] ?>">
-                                    <i class="bi bi-pencil me-1"></i>Edit
+                                    <i class="bi bi-pencil me-1"></i>
                                 </button>
                                 <button class="btn btn-danger btn-sm">
-                                    <i class="bi bi-trash me-1"></i>
-                                    <a href="../component/deletelaporan.php?id=<?= $l['id'] ?>&redirect=../page/laporan.php" onclick="return confirm('apakah anda yakin?')">Delete</a>
+                                    <a href="../component/deletelaporan.php?id=<?= $l['id'] ?>&redirect=../page/laporan.php" onclick="return confirm('Apakah Anda yakin?')" style="text-decoration: none; color: white;">
+                                        <i class="bi bi-trash me-1"></i>
+                                    </a>
                                 </button>
                             </td>
                         </tr>
-
-                        <!-- Edit Modal -->
-                        <div class="modal fade" id="editModal<?= $l['id'] ?>" tabindex="-1" aria-labelledby="editModalLabel<?= $l['id'] ?>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editModalLabel<?= $l['id'] ?>">Edit Laporan</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <form action="../component/update.php" method="post">
-                                        <div class="modal-body">
-                                            <input type="hidden" name="id" value="<?= $l['id'] ?>">
-
-                                            <div class="mb-3">
-                                                <label for="laporan<?= $l['id'] ?>" class="form-label">Laporan</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="laporan" id="laporan<?= $l['id'] ?>"
-                                                        placeholder="Masukkan judul laporan" required value="<?= $l['laporan'] ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="lokasi<?= $l['id'] ?>" class="form-label">Lokasi</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="lokasi" id="lokasi<?= $l['id'] ?>"
-                                                        placeholder="Masukkan lokasi" required value="<?= $l['lokasi'] ?>">
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="pelapor<?= $l['id'] ?>" class="form-label">Pelapor</label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="pelapor" id="pelapor<?= $l['id'] ?>"
-                                                        placeholder="Masukkan nama pelapor" required value="<?= $l['pelapor'] ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                            <button type="submit" name="submit" class="btn btn-primary">Simpan Perubahan</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                         <?php $i++; ?>
                     <?php } ?>
                 </tbody>
             </table>
+            <div class="pagination" id="pagination"></div>
         </div>
     </div>
 </section>
+
+<?php include 'modalLaporan.php'; ?>
+
+<script>
+    // Search Realtime
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+        const searchText = this.value.toLowerCase();
+        const tableRows = document.querySelectorAll('#tableBody tr');
+
+        tableRows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            let match = false;
+
+            cells.forEach(cell => {
+                if (cell.textContent.toLowerCase().includes(searchText)) {
+                    match = true;
+                }
+            });
+
+            row.style.display = match ? '' : 'none';
+        });
+    });
+
+    // Pagination
+    const rowsPerPage = 10;
+    const tableBody = document.getElementById('tableBody');
+    const rows = tableBody.querySelectorAll('tr');
+    const totalPages = Math.ceil(rows.length / rowsPerPage);
+    const pagination = document.getElementById('pagination');
+
+    function showPage(page) {
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+
+        rows.forEach((row, index) => {
+            row.style.display = index >= start && index < end ? '' : 'none';
+        });
+
+        pagination.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLink = document.createElement('a');
+            pageLink.textContent = i;
+            pageLink.href = '#';
+            pageLink.className = page === i ? 'active' : '';
+
+            pageLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                showPage(i);
+            });
+
+            pagination.appendChild(pageLink);
+        }
+    }
+
+    showPage(1);
+</script>
