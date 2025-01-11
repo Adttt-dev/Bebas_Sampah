@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../src/css/laporan.css">
     <link rel="stylesheet" href="../../src/css/main.css">
     <link rel="icon" href="../../src/img/earth.png">
-    <title>LAPOR PEMBUANGAN SAMPAH ILEGAL!</title>
+    <title>Bebas Sampah</title>
 </head>
 
 <body>
