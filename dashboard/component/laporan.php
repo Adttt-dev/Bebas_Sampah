@@ -63,10 +63,13 @@ $laporan = query($query);
                 <tbody id="tableBody">
                     <?php $i = 1; ?>
                     <?php foreach ($laporan as $l) { ?>
-                        <tr data-id="<?= $l['id'] ?>" data-username="<?= htmlspecialchars($l['username']) ?>"
-                            data-laporan="<?= htmlspecialchars($l['laporan']) ?>" data-lokasi="<?= htmlspecialchars($l['lokasi']) ?>"
+                        <tr data-id="<?= $l['id'] ?>" 
+                            data-username="<?= htmlspecialchars($l['username']) ?>"
+                            data-laporan="<?= htmlspecialchars($l['laporan']) ?>" 
+                            data-lokasi="<?= htmlspecialchars($l['lokasi']) ?>"
                             data-tanggal="<?= htmlspecialchars(date('d M Y, H:i', strtotime($l['tanggal']))) ?>"
-                            data-gambar="<?= '../../database/img/' . htmlspecialchars($l['gambar']) ?>">
+                            data-gambar="<?= '../../database/img/' . htmlspecialchars($l['gambar']) ?>"
+                            onclick="showReportDetail(this)">
                             <td><?= $i; ?></td>
                             <td><?= htmlspecialchars($l['username']); ?></td>
                             <td><?= htmlspecialchars($l['laporan']); ?></td>
@@ -101,9 +104,50 @@ $laporan = query($query);
     </div>
 </section>
 
-<?php include 'modalLaporan.php'; ?>
+<!-- Detail Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reportModalLabel">Detail Laporan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Username:</strong> <span id="modalUsername"></span></p>
+                        <p><strong>Laporan:</strong> <span id="modalLaporan"></span></p>
+                        <p><strong>Lokasi:</strong> <span id="modalLokasi"></span></p>
+                        <p><strong>Tanggal:</strong> <span id="modalTanggal"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <img id="modalGambar" src="" alt="Gambar Laporan" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
+    // Function to display report details in modal
+    function showReportDetail(row) {
+        const username = row.getAttribute('data-username');
+        const laporan = row.getAttribute('data-laporan');
+        const lokasi = row.getAttribute('data-lokasi');
+        const tanggal = row.getAttribute('data-tanggal');
+        const gambar = row.getAttribute('data-gambar');
+
+        document.getElementById('modalUsername').textContent = username;
+        document.getElementById('modalLaporan').textContent = laporan;
+        document.getElementById('modalLokasi').textContent = lokasi;
+        document.getElementById('modalTanggal').textContent = tanggal;
+        document.getElementById('modalGambar').src = gambar;
+
+        const modal = new bootstrap.Modal(document.getElementById('reportModal'));
+        modal.show();
+    }
+
     // Search Realtime
     document.getElementById('searchInput').addEventListener('keyup', function () {
         const searchText = this.value.toLowerCase();

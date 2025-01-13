@@ -32,9 +32,9 @@ $video = query('SELECT * FROM edukasi_yt');
                     <tr>
                         <th style="width: 1%;">No</th>
                         <th style="width: 20%;">Title</th>
-                        <th style="width: 15%;">URL Video</th>
+                        <th style="width: 35%;">URL Video</th>
                         <th style="width: 10%;">Video Embed</th>
-                        <th style="width: 30%;">Aksi</th>
+                        <th style="width: 10%;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,10 +49,10 @@ $video = query('SELECT * FROM edukasi_yt');
                             </td>
                             <td class="report-actions">
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal<?= $s['id'] ?>">
-                                    <i class="bi bi-pencil me-1"></i>Edit
+                                    <i class="bi bi-pencil me-1"></i>
                                 </button>
                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $s['id'] ?>">
-                                    <i class="bi bi-trash me-1"></i>Delete
+                                    <i class="bi bi-trash me-1"></i>
                                 </button>
                             </td>
                         </tr>

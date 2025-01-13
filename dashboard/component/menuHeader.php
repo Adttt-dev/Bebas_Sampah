@@ -30,7 +30,7 @@ $total_keseluruhan = $total_laporan + $total_saran + $total_video;
 </style>
 
 <!-- KPIs -->
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
     <div class="row g-4">
         <!-- Laporan -->
         <div class="col-lg-3 col-md-6">
